@@ -43,5 +43,13 @@ double Molecule::bond(int atom1, int atom2)
     +(geom[atom1][2]-geom[atom2][2])*(geom[atom1][2]-geom[atom2][2])
     );
 }
-Molecule::Molecule(){ }
+double Molecule::angle(int atom1, int atom2, int atom3)
+{
+    return acos(unit(0,atom2,atom1) * unit(0,atom2,atom3) + unit(1,atom2,atom1) * unit(1,atom2,atom3) + unit(2,atom2,atom1) * unit(2,atom2,atom3));
+}
+double Molecule::unit(int cart, int atom1, int atom2)
+{
+    return -(geom[atom1][cart]-geom[atom2][cart])/bond(atom1,atom2);
+}
+Molecule::Molecule() {}
 Molecule::~Molecule(){ }
