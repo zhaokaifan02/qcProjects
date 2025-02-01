@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
   Molecule mol("geom.dat", 0);
-
+  Molecule *mol2 = &mol;
   cout << "Number of atoms: " << mol.natom << endl;
   cout << "Input Cartesian coordinates:\n";
   mol.print_geom();
