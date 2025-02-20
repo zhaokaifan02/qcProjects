@@ -18,8 +18,6 @@ $$
 \end{align}
 $$
 
-
-
 因为这个方程是一个二阶方程**second-order equation**，所以会进行两次积分从而产生两个常数，因为我们一般**选取起始的坐标和起始各个方向的速度**。由此就可以写出他的轨迹方程了。
 
 $$
@@ -44,8 +42,6 @@ $$
 
 所以对于量子领域来说，我们不能再使用轨迹来刻画粒子的状态，转而使用波函数。
 
-
-
 量子力学系统的状态完全由一个函数$\psi(r,t)$指定，该函数依赖于粒子的坐标和时间。这个函数称为**波函数wave function**或**状态函数state function**，它有一个重要的性质，即$\psi^*\psi\,dxdydz$是粒子位于时间1的体积元dxdydz内的概率。
 
 同样的波函数的乘积的模也反应了波的强度。
@@ -59,7 +55,7 @@ $$
 由于波函数的乘积反映了其密度，所以作为密度函数理应满足归一性即
 
 $$
-  \iiint\limits_{\text{all space}} dx \, dy \, dz \, \Psi^*(r, t) \Psi(r, t) = 1
+\iiint\limits_{\text{all space}} dx \, dy \, dz \, \Psi^*(r, t) \Psi(r, t) = 1
 $$
 
 有时候也把x y z一起记为$\tau$，积分式子也可以写为
@@ -77,6 +73,38 @@ $$
 
 归一化的前提又是这个平方后的积分是**有限的finite**。我们把这种性质叫做**平方可积的square integrable**。
 
-因此对于一个波函数，他如果作为系统的状态函数的话，必须是平方可积的，也就是可以归一化的
+因此对于一个波函数，他如果作为系统的状态函数的话，必须是平方可积的，也就是**normalized可以归一化的**
+
+因此我们对满足状态函数的波函数进行一个总结。
+
+波函数和他的一阶导函数必须满足
+
+1. 单值的 single-valued
+
+2. 连续的 continuous,
+
+3. 有界的 finite
+
+
+
+# 量子力学算子代表经典物理学变量
+
+To every observable in classical mechanics there corresponds a linear operator in 
+quantum mechanics.  经典力学中每一个可观测的物理量都对应一个量子力学算子。
+
+| Observable           | Symbol                  | Operator Symbol      | Operation                                                                                                                                                                                                |
+| -------------------- | ----------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Position**         | $ x $                   | $ \hat{X} $          | Multiply by $ x $                                                                                                                                                                                        |
+|                      | $ \mathbf{r} $          | $ \hat{\mathbf{R}} $ | Multiply by $ \mathbf{r} $                                                                                                                                                                               |
+| **Momentum**         | $ p_x $                 | $ \hat{P}_x $        | $ -i\hbar \frac{\partial}{\partial x} $                                                                                                                                                                  |
+|                      | $ \mathbf{p} $          | $ \hat{\mathbf{P}} $ | $ -i\hbar \left( \mathbf{i} \frac{\partial}{\partial x} + \mathbf{j} \frac{\partial}{\partial y} + \mathbf{k} \frac{\partial}{\partial z} \right) $                                                      |
+| **Kinetic energy**   | $ T_x $                 | $ \hat{T}_x $        | $ -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} $                                                                                                                                                  |
+|                      | $ T $                   | $ \hat{T} $          | $ -\frac{\hbar^2}{2m} \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \right) $ <br> $ = -\frac{\hbar^2}{2m} \nabla^2 $                       |
+| **Potential energy** | $ V(x) $                | $ \hat{V}(x) $       | Multiply by $ V(x) $                                                                                                                                                                                     |
+|                      | $ V(x,y,z) $            | $ \hat{V}(x,y,z) $   | Multiply by $ V(x,y,z) $                                                                                                                                                                                 |
+| **Total energy**     | $ E $                   | $ \hat{H} $          | $ -\frac{\hbar^2}{2m} \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \right) + V(x,y,z) $ <br> $ = -\frac{\hbar^2}{2m} \nabla^2 + V(x,y,z) $ |
+| **Angular momentum** | $ l_x = y p_z - z p_y $ | $ \hat{L}_x $        | $ -i\hbar \left( y \frac{\partial}{\partial z} - z \frac{\partial}{\partial y} \right) $                                                                                                                 |
+|                      | $ l_y = z p_x - x p_z $ | $ \hat{L}_y $        | $ -i\hbar \left( z \frac{\partial}{\partial x} - x \frac{\partial}{\partial z} \right) $                                                                                                                 |
+|                      | $ l_z = x p_y - y p_x $ | $ \hat{L}_z $        | $ -i\hbar \left( x \frac{\partial}{\partial y} - y \frac{\partial}{\partial x} \right) $                                                                                                                 |
 
 
