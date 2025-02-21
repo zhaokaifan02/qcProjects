@@ -82,7 +82,7 @@ $$
 \omega a = n\pi\\
 \omega^2 = \frac{2mE}{\hbar^2}\\
 $$
-因此不难发现n越大能量越大，也就是说，对于能级轨道越高的电子，他的分布就越均匀。	
+因此不难发现n越大能量越大，也就是说，对于能级轨道越高的电子，他的分布就越均匀。    
 
 粒子的行为受到其能量影响。
 
@@ -143,7 +143,6 @@ $$
 $$
 \lang \psi| \hat{S} |\psi\rang = \lang{S}\rang =\int \psi_{n}^{*}(x) \hat{S} \psi_{n}(x) \, dx
 $$
-
 
 因此我们想计算动量的平均值就可以
 $$
@@ -251,11 +250,7 @@ $$
 $$
 -\frac{\hbar^2}{2m} \frac{1}{X(x)} \frac{d^2 X}{dx^2} = E_x\\
 
-
-
 -\frac{\hbar^2}{2m} \frac{1}{Y(y)} \frac{d^2 Y}{dy^2} = E_y\\
-
-
 
 -\frac{\hbar^2}{2m} \frac{1}{Z(z)} \frac{d^2 Z}{dz^2} = E_z\\
 E_x+E_y+E_z = E
@@ -271,13 +266,9 @@ $$
 
 X(x) = A_x \sin\left(\frac{n_x \pi x}{a}\right), \quad n_x = 1, 2, 3, \ldots \\
 
-
-
 Y(y) = A_y \sin\left(\frac{n_y \pi y}{b}\right), \quad n_y = 1, 2, 3, \ldots\\
 
-
-
-Z(z) = A_z \sin\left(\frac{n_z \pi z}{c}\right), \quad n_z = 1, 2, 3, \ldots
+Z(z) = A_z \sin\left(\frac{n_z \pi z}{c}\right), \quad n_z = 1, 2, 3, \ldots
 $$
 所以我们求出了三维的波动方程为
 $$
@@ -337,7 +328,7 @@ $$
 $$
 因此平均动量为
 $$
-\langle p \rangle = \int_0^{a} dx \int_0^{b} dy \int_0^{c} dz \, \psi^*(x, y, z) \hat{P} \psi(x, y, z)
+\langle p \rangle = \int_0^{a} dx \int_0^{b} dy \int_0^{c} dz \, \psi^*(x, y, z) \hat{P} \psi(x, y, z)
 $$
 不难看出，**结果其实也是0**
 
@@ -354,8 +345,6 @@ $$
 ![1739796767087](.\figure\1739796767087.png)
 
 请注意，简并性的发生是由于当一般矩形框变成立方体时引入的对称性，而当通过制造不同长度的边而破坏对称性时，简并性被“解除”。**量子力学的一般原理表明，简并是潜在对称性的结果，当对称性被打破时，简并就会被解除**。
-
-
 
 由
 $$
@@ -388,11 +377,13 @@ $$
 $$
 因此我们可以推出
 $$
+
+
 \hat{H}_1(s) \phi_n(s) = E_n \phi_n(s)\\
 \hat{H}_2(w) \phi_m(w) = E_m \phi_m(w)
 $$
 从而求和得到最终的能量关系
 $$
-E_{nm} = E_n + E_m
+E_{nm} = E_n + E_m
 $$
 这个重要的结果提供了显著的简化，因为它将原始问题简化为几个更简单的问题。 
