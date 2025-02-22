@@ -62,7 +62,6 @@ $$
 
 $$
 \int_{-\infty}^{\infty} d\tau \, \Psi^*(r, t) \Psi(r, t) = 1
-
 $$
 
 比如在经典墙角模型中，我们的三个积分区域就是(0,a),(0,b),(0,c)。
@@ -112,7 +111,6 @@ quantum mechanics.  经典力学中每一个可观测的物理量都对应一个
 $$
 \hat{A}\psi_1 = a\psi_1 \\
 \hat{A}\psi_2 = a\psi_2 \\
-
 $$
 
  将其线性组合得到
@@ -145,7 +143,6 @@ $$
 
 $$
 \hat{H} = -\frac{\hbar^2}{2m} \nabla^2 - \frac{Ze^2}{r}
-
 $$
 
 也就是说对于不同的研究对象来说，他们的算子都是不同的，所以**这个特定对象的特定算子的特征值，就能很好的反应这个对象的某些性质**。
@@ -199,5 +196,273 @@ $$
 这样就证明了，只有**系统在特征函数的情况下要测量的值才是一个可以被观察到的实际的数**。
 
 **而如果不是特征函数的情况下，则是一个方差不为0的分布。**
+
+# 两个算符的交换子对理解测不准原理有很大帮助
+
+当两个算子依此对函数进行作用时，是按照与函数的位置关系进行运算的
+$$
+\hat{A}\hat{B}f(x) = \hat{A}[\hat{B}(x)]
+$$
+就和矩阵运算一样，通常情况下是不能交换的
+$$
+AB \neq BA\\
+\hat{A}\hat{B} \neq = \hat{B}\hat{A}
+$$
+但如果某些算子性质比较友好的话，可以进行交换我们称其是可**交换的commutative** 
+$$
+\hat{A}\hat{B}f(x) = \hat{B}\hat{A}f(x)
+$$
+当然不能交换的话称为**noncommutative** 
+$$
+\hat{A}\hat{B}f(x) \neq \hat{B}\hat{A}f(x)
+$$
+例如
+$$
+\hat{A} = \frac{d}{dx} \quad \hat{B} =x \\
+\hat{A}\hat{B}f(x) = f(x) + x\frac{df(x)}{dx} \\
+\hat{B}\hat{A}f(x) = x\frac{df(x)}{dx}
+$$
+这里的两个算子就是**非可交换的**。对于不可交换的算子如果有
+$$
+\hat{A}\hat{B}f(x) - \hat{B}\hat{A}f(x) = f(x) \\
+(\hat{A}\hat{B}-\hat{B}\hat{A})f(x) = \hat{I}f(x)
+$$
+这里的$\hat{I}$被叫做**identity operator**只表示简单对f(x)乘上某个东西。
+
+因为是对**任意的arbitrary**函数f(x),因此我们也可以将前面的算子写作
+$$
+[\hat{A},\hat{B}] = \hat{A}\hat{B}-\hat{B}\hat{A} = \hat{I}
+$$
+这个符号被叫做**交换子commutator** 。现在我们利用换向子的概念来重新定义可交换性。
+
+如果对于所有的f(x)都有$[\hat{A},\hat{B}]f(x) = 0$，则称两个算子是可交换的。
+
+例如
+$$
+\hat{A} \hat{B} f(x) = \frac{d}{dx} \left[ x^2 f(x) \right] = 2x f(x) + x^2 \frac{df}{dx} \\
+\hat{B} \hat{A} f(x) = x^2 \frac{d}{dx} f(x) = x^2 \frac{df}{dx} \\
+[\hat{A},\hat{B}]f(x) = 2xf(x) \\
+\hat{I} = 2x \\
+[\hat{A},\hat{B}]  = 2x\hat{I}
+$$
+同样的，对于动量算子和位移算子也有
+$$
+\hat{P}_x = -i\hbar\frac{d}{dx} \qquad \hat{X}= x \\
+[\hat{P}, \hat{X}] f(x) = \hat{P} \hat{X} f(x) - \hat{X} \hat{P} f(x) \\
+= -i\hbar \frac{d}{dx} [x f(x)] + x i \hbar \frac{d}{dx} f(x) \\
+= -i\hbar f(x) + i\hbar \frac{df}{dx} \\
+= -i\hbar f(x)
+$$
+所以求出
+$$
+[\hat{P}, \hat{X}] = -i\hbar\hat{I}
+$$
+这里的$\hat{I}$就是单纯的表达乘法的意思。
+
+现在我们回忆一下测不准原理。
+$$
+\sigma^2_A = \int \psi^* \left( \hat{A} - \langle a \rangle \right)^2 \psi \, dx \\
+\sigma^2_B = \int \psi^* \left( \hat{B} - \langle b \rangle \right)^2 \psi \, dx \\
+\sigma^2_A\sigma^2_B \geq\int\psi^*[\hat{A},\hat{B}]\psi\,dx
+$$
+
+
+如果将A，B转化为表示唯一和动量的算子则有以下表达
+$$
+[\hat{A}, \hat{B}] = [\hat{P}_x, \hat{X}] = -i\hbar \hat{I} \\
+\sigma^2_p \sigma^2_x \geq -\frac{1}{4} \left[ \int \psi^* (-i\hbar) \psi \, dx \right]^2 \\
+\sigma^2_p \sigma^2_x \geq -\frac{1}{4} (-i\hbar)^2 = \frac{\hbar^2}{4} \\
+\sigma_p \sigma_x \geq \frac{\hbar}{2}
+$$
+就把海森堡测不准原理推导出来了
+
+# 量子力学算子必须是埃尔米特Hermitian 算子
+
+## Hermitian 矩阵性质
+
+我们先回忆一下线性代数中的Hermitian 矩阵的性质
+
+Hermitian 矩阵（厄米矩阵，Hermitian matrix）具有以下重要性质：
+
+1. **自共轭转置等于自身**：
+    对于 Hermitian 矩阵 AA，满足
+
+   $A = A^H$
+
+   其中 $A^H$ 是 A 的共轭转置，即 $(A^H)_{ij} = \overline{A_{ji}}$。
+
+2. **特征值全为实数**：
+    任何 Hermitian 矩阵的所有特征值都是实数。
+
+3. **特征向量对应不同特征值时正交**：
+    若 Hermitian 矩阵 AA 具有不同的特征值 $\lambda_i \neq \lambda_j$，对应的特征向量 $v_i$ 和 $v_j$ 互相正交，即
+
+   $v_i^Hv_j=0$
+
+   这意味着 Hermitian 矩阵可以正交（酉）对角化。
+
+4.   **可以酉对角化**（Spectral Theorem）：
+
+    存在酉矩阵 U（即 $U^HU = I$），使得
+
+   $A=UDU^H $
+
+   其中 D 是对角矩阵，其对角元为 A 的特征值。
+
+5. **行列式为实数**：
+    由于特征值为实数，Hermitian 矩阵的行列式也是实数。
+
+6. **迹（trace）为实数**：
+
+   $tr(A) = \sum \lambda_i$
+
+   其中 $\lambda_i $是 AA 的特征值，由于它们都是实数，所以迹也是实数。
+
+7. **半正定性**（如果所有特征值非负）：
+    若 AA 的所有特征值均为非负，则 A 为**正定**或**半正定**矩阵，满足
+
+   $xHAx≥0,∀x≠0$
+
+8. **Hermitian 矩阵的指数仍是 Hermitian 矩阵**：
+    若 AA 是 Hermitian，则矩阵指数 $e^A$ 也是 Hermitian矩阵。
+
+## 量子力学算子
+
+所有的量子力学算子，都是线性的。并且在之前的假设中，我们可以观察到(方差为0)的对于算子$\hat{A}$来说就是他的**特征值eigenvalues** 
+
+我们已经看到，波函数和一般的算符都是复数。但是，**如果要使特征值与实验测量的结果相对应，它们肯定必须是实数。**
+
+例如对于以下方程我们有
+$$
+\hat{A}\psi = a\psi
+$$
+算子和波函数都是复数，而我们能观察到的结果a一定是实数。即，**这个算子的特征值必须都是实数**。
+
+所以我们必须对算子做一些限制。
+
+先利用前面讲的归一性与特征值方程进行结合
+$$
+\int \psi^* \hat{A} \psi \, dx = a \int \psi^* \psi \, dx = a
+$$
+之后我们对这个特征值方程进行取共轭，对于算子来说他的共轭也是把虚部取反而已，比如
+$$
+\hat{P} = -i\hbar\frac{d}{dx} \\
+\hat{P}^* = i\hbar\frac{d}{dx}
+$$
+取**共轭conjugate** 后有
+$$
+\hat{A}^* \psi^{*} = a^* \psi^{*} = a \psi^*
+$$
+因为a是可被观测到的实数，所以实数的共轭还是他本身的。之后我们再进行积分处理有
+$$
+\int \psi \hat{A}^*\psi^* \, dx = a \int \psi\psi^* \, dx = a
+$$
+因此将两个式子联立可以得到
+$$
+\int \psi^* \hat{A} \psi \, dx = \int \psi \hat{A}^* \psi^* \, dx
+$$
+这样就是我们所定义的Hermitian算子。如果**一个算子对于任何满足波动方程的函数，都能有以上式子成立，那么我们就称这个算子是Hermitian operator** 。
+
+所以Hermitian算子的最终定义可以如下
+$$
+\int_{-\infty}^{\infty} f^* \hat{A} f \, dx = \int_{-\infty}^{\infty} f \hat{A}^* f^* \, dx
+$$
+所以我们对有了一条更完备的假设
+
+**在经典力学中，每一个可观察到的物理量都对应着一个线性的、量子力学中的、Hermitian算符**。
+
+我们用几个例子来理解
+
+## 例子来说明Hermitian算符
+
+1.  证明$\hat{A} = \frac{d}{dx}$不是Hermitian算符
+
+   先列出判别式，再利用分布积分法可以得到
+   $$
+   \int_{-\infty}^{\infty} f^* \frac{d}{dx} f \, dx = \int_{-\infty}^{\infty} f^* \frac{df}{dx} \, dx = \left| f^* f \right|_{-\infty}^{\infty} -\int_{-\infty}^{\infty} f\frac{df^*}{dx} \,dx
+   $$
+   因为$f$是状态函数，所以他的归一性表明他在无穷端是0，因此前面一项为0，可以得到
+   $$
+   \int_{-\infty}^{\infty} f^* \frac{d}{dx} f \, dx = -\int_{-\infty}^{\infty} \frac{d}{dx} f^* f \, dx
+   $$
+   说明$\hat{A}$不是Hermitian算符
+
+2.  证明动量算子$\hat{P}_x = -i\hbar\frac{d}{dx}$是Hermitian算子
+
+$$
+\int_{-\infty}^{\infty} f^* \left( -i \frac{d}{dx} \right) f \, dx = -i \int_{-\infty}^{\infty} f^* \frac{df}{dx} \, dx = i \int_{-\infty}^{\infty} f\frac{df^*}{dx} \, dx \\
+\int_{-\infty}^{\infty} f\hat{P_x}^* f^* \, dx =\int_{-\infty}^{\infty} f \left( i \frac{d}{dx} \right) f^* \, dx = i \int_{-\infty}^{\infty} f \frac{df^*}{dx} \, dx
+$$
+
+​	所以我们得出动量是Hermitian算子
+
+3.  证明动能算子$\hat{T}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}$
+
+   我们可以进行简单的两次分步积分
+   $$
+   -\frac{\hbar^2}{2m} \int_{-\infty}^{\infty} f^* \frac{d^2 f}{dx^2} \, dx = \frac{\hbar^2}{2m} \left| f^* \frac{df}{dx} \right|_{-\infty}^{\infty} + \frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \frac{df^*}{dx} \frac{d f}{dx} \, dx \\
+   = \frac{\hbar^2}{2m} \left| \frac{df}{dx} f \right|_{-\infty}^{\infty} - \frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \frac{d^2 f^*}{dx^2} f \, dx\\ 
+   =  - \frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \frac{d^2 f^*}{dx^2} f \, dx\\ 
+   $$
+   
+
+   
+
+   同样对共轭后的直接处理
+   $$
+   \int_{-\infty}^{\infty} f \left( -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \right)^* f ^*\, dx = \int_{-\infty}^{\infty} f \left( -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \right) f^* \, dx \\ 
+   = -\frac{\hbar^2}{2m}  \int_{-\infty}^{\infty} f \frac{d^2f^*}{dx^2}\,dx
+   $$
+   就得到了二者相等，证明了动能算子也是Hermitian算子
+
+   
+
+Hermitian算子一个更加高级的定义是
+$$
+\int_{-\infty}^{\infty} dx \, f_m^*(x) \hat{A} f_n(x) = \int_{-\infty}^{\infty} dx \, f_n(x) \hat{A}^* f_m^*(x)
+$$
+
+对于任意的两个可以不同的满足状态函数特点
+
+## 量子力学中的常用符号
+
+现在我们来介绍以下最常用的符号
+
+我们定义$\{f(x)_n\}$为所有满足状态函数的函数的集合。这些函数可以作为某些算子的特征函数。
+
+我们用$| n \rang$来表示$f_n(x)$。这时有人可能会想那函数的共轭conjugate可以表示为$| n\rang^*$但我们使用$\lang n|$来表示。
+
+因此$f_n^*(x)f_n(x)$的积分可以表示为$\lang n | n\rang$即
+$$
+\int_{-\infty}^{\infty}f_n^*(x)f_n(x)\,dx = \lang n | n\rang \\
+$$
+根据前面见过的**归一性Normalization** ，我们可以很容易的得到$\lang n| n\rang=1$更加普遍的可以得到
+$$
+\int_{-\infty}^{\infty} dx \, f_m^*(x) f_n(x) = \langle m | n \rangle
+$$
+所以我们对这个积分取共轭后可以得到
+$$
+ \langle m | n \rangle^*=\int_{-\infty}^{\infty} dx \, f_m(x) f_n^*(x) =  \langle n | m \rangle
+$$
+之后我们将算子操作引入可以得到
+$$
+\int_{-\infty}^{\infty} dx \, f_m^*(x) \hat{A} f_n(x) = \langle m | \hat{A} | n \rangle \\
+$$
+偶尔也会把算符写在后面即
+$$
+\int_{-\infty}^{\infty} dx \, f_m^*(x) \hat{A} f_n(x) = \langle m | \hat{A} | n \rangle = \lang m| \hat{A}n\rang
+$$
+同样的我们对其按照共轭的方式组织
+$$
+\int_{-\infty}^{\infty} dx \, f_n(x) \hat{A}^* f_m^*(x) = \left[ \int_{-\infty}^{\infty} dx \, f_m^*(x) \hat{A} f_n(x) \right]^* = \langle n | \hat{A} | m \rangle^*
+$$
+因此如果A是Hermitian算子可以得到
+$$
+\langle n | \hat{A} | m \rangle^* = \langle m | \hat{A} | n \rangle
+$$
+这个符号是由英国物理学家**Paul Dirac 保罗狄拉克**提出的。
+
+符号$| n \rang$被称为**kets** ，$\lang m|$被称为**bras**。这个命名法来源一bra c ket。 $\lang n|\hat{A}|m\rang$ 就像一个**框子括号bracket**一样对A进行积分。这种符号被叫做Dirac notation 或者 bracket notation 。
+
 
 
