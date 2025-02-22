@@ -466,3 +466,131 @@ $$
 
 
 
+## Hermitian算子的特征函数是正交的
+
+Hermitian算子不仅仅满足特征值是实数，对于特征函数，也就是系统的状态函数也有神奇的性质。以同一个算子的两个不同特征值的特征函数为例
+$$
+\hat{A}\psi_n = a_n\psi_n \\
+\hat{A}\psi_m = a_m\psi_m
+$$
+我们将他们放在一起进行积分有
+$$
+\int_{-\infty}^{\infty} \psi_m^* \hat{A} \psi_n \, dx = a_n \int_{-\infty}^{\infty} \psi_m^* \psi_n \, dx \\
+\int_{-\infty}^{\infty} \psi_n \hat{A}^* \psi_m^* \, dx = \left[ \int_{-\infty}^{\infty} \psi_n^* \hat{A} \psi_m \, dx \right]^*  = a_m^* \int_{-\infty}^{\infty} \psi_n \psi_m^* \, dx \\
+= a_m^* \int_{-\infty}^{\infty} \psi_m^* \psi_n \, dx
+$$
+使用前面讲过的Dirca符号可以写成
+$$
+\lang m|\hat{A}|n\rang = a_n\lang m |n\rang \\
+\lang n| \bar{A} |m \rang ^* = a_m^*\lang m|n\rang
+$$
+我们对这个两个式子做减法得到
+$$
+\int_{-\infty}^{\infty} \psi_m^* \hat{A} \psi_n \, dx - \int_{-\infty}^{\infty} \psi_n \hat{A} \psi_m^* \, dx = (a_n^* - a_m^*) \int_{-\infty}^{\infty} \psi_m^* \psi_n \, dx
+$$
+使用Dirca符号可以写成
+$$
+\langle m | \hat{A} | n \rangle - \langle n | \hat{A} | m \rangle^* = (a_n - a_m^*)\lang m | n\rang
+$$
+因为量子力学还价下的算子$\hat{A}$都是Hermitian的即有
+$$
+\langle m | \hat{A} | n \rangle - \langle n | \hat{A} | m \rangle^*  = 0
+$$
+将其带入得到
+$$
+(a_n - a_m^*) \int_{-\infty}^{\infty} \psi_m^* \psi_n \, dx = (a_n - a_m^*) \langle m | n \rangle = 0
+$$
+如果$m=n$可以整理的$\lang m | n \rang = 1$,可以得到
+$$
+a_n = a_n^*
+$$
+**这样证明了算子的特征值一定是实数**
+
+现在我们考虑$m\neq n$
+$$
+\int_{-\infty}^{\infty} \psi_m^* \psi_n \, dx = \langle m | n \rangle = 0 \qquad m\neq n
+$$
+对于满足这样性质的两个波动函数(状态函数)，称其为**直交的orthogonal** 。
+
+注意这里的直交的前提是**非简并的nondegenerate**。
+
+回忆一下简并性，**哈密顿算子下，指的是同一个能量E可以由不同的波函数对应**
+
+用单一例子在有界盒子的非势能运动下系统举例子
+$$
+\hat{H}\psi = E\psi \\
+\frac{d^2\psi}{dx^2} +\frac{2mE}{\hbar^2}\psi(x) = 0 \\ \\
+$$
+解得为
+$$
+\psi_n(x) = Bsin(\frac{n\pi x}{a}) \\
+$$
+归一化为
+$$
+\int_0^a \psi_n^*\psi_n dx = 1 \\
+|B|^2\int_0^asin^2\frac{n\pi x}{a} dx =1 \\
+\psi_n(x) = \sqrt{\frac{2}{a}}sin\frac{n \pi x}{a}
+$$
+回忆一下高中学过的三角函数公式
+$$
+\sin \alpha \sin \beta = \frac{1}{2} \cos(\alpha - \beta) - \frac{1}{2} \cos(\alpha + \beta) \\
+\cos(\alpha + \beta) = \cos \alpha \cos \beta - \sin \alpha \sin \beta \\
+\cos(\alpha - \beta) = \cos \alpha \cos \beta + \sin \alpha \sin \beta
+$$
+再将其带入到
+$$
+\int_{0}^{a}\psi_m^* \psi_n \, dx = \langle m | n \rangle =\qquad m\neq n \\
+\frac{2}{a}\int_0^a\sin{\frac{n\pi x}{a}}\sin{\frac{m\pi x}{a}}\, dx = \frac{1}{a}\int_0^a\cos{\frac{(n-m)\pi x}{a}}-\cos{\frac{(n+m)\pi x}{a}}\,dx\\
+= 0
+$$
+所以我们有如下发现
+$$
+\frac{2}{a} \int_{0}^{a} \sin\left(\frac{n \pi x}{a}\right){\sin\left(\frac{m \pi x}{a}\right)} \, dx = 0 \quad (m \neq n) \\
+\frac{2}{a} \int_{0}^{a} \sin^2\left(\frac{n \pi x}{a}\right) \, dx = 1 \quad(m = n)
+$$
+将其推广到所有情况
+$$
+\int_{-\infty}^{\infty} \psi_m^* \psi_n \, dx = \langle m | n \rangle = \delta_{nm} \\
+\delta_{nm} = 
+\begin{cases} 
+1 & \text{if } m = n \\ 
+0 & \text{if } m \neq n 
+\end{cases}
+$$
+这个符号$\delta_{nm}$被叫做**Kronecker delta**
+
+所以做个总结，对于不简并的算子相同积分计算为1，不同积分计算为0，像极了特征向量里的正交性质。
+
+现在我们考虑简并的情况，即不同的状态方程对应同一个能量E
+$$
+\hat{A}\psi_1 = a_1\psi_1\\
+\hat{A}\psi_2 = a_1\psi_2
+$$
+我们考虑这两个状态方程的线性组合为$\phi$并对其进行算子计算得
+$$
+\hat{A} \phi = \hat{A}(c_1 \psi_1 + c_2 \psi_2) = c_1 \hat{A} \psi_1 + c_2 \hat{A} \psi_2\\
+= a_1 c_1 \psi_1 + a_2 c_2 \psi_2 = a_1 (c_1 \psi_1 + c_2 \psi_2) = a_1 \phi
+$$
+所以我们可以得到结论，**简并的状态方程得线性组合依然是简并的**
+
+同样我们也可以取得两种线性组合$\phi_1$和$\phi_2$满足
+$$
+\int_{-\infty}^{\infty} \phi_1^* \phi_2 \, dx = 0
+$$
+现在我们来证明他，取线性组合为
+$$
+\phi_1 = \psi_1 \quad \text{and} \quad \phi_2 = \psi_2 + c \psi_1
+$$
+然后进行Dirca算子计算
+$$
+\int_{-\infty}^{\infty} \phi_1^* \phi_2 \, dx = \lang\phi_1 | \phi_2\rang = \int_{-\infty}^{\infty} \psi_1^* (\psi_2 + c \psi_1) \, dx \\
+= \int_{-\infty}^{\infty} \psi_1^* \psi_2 \, dx + c \int_{-\infty}^{\infty} \psi_1^* \psi_1 \, dx = \lang\psi_1 | \psi_2\rang + c = 0
+$$
+由此我们的常数c可以取得为
+$$
+c = -\int_{-\infty}^{\infty} \psi_1^* \psi_2 \, dx = -\lang\psi_1 | \psi_2\rang
+$$
+这个过程可以扩展到n状态方程的简并情况，依此累加迭代实现。这个过程被称为**施密特正交化Gram-Schmidt orthonormalization procedure** 
+
+所以即使存在n个简并，我们可以使用施密特正交化来将其变成n个正交的函数，**从而组成一个标准正交的集合**。
+
