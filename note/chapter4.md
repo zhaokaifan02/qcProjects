@@ -200,18 +200,24 @@ $$
 # 两个算符的交换子对理解测不准原理有很大帮助
 
 当两个算子依此对函数进行作用时，是按照与函数的位置关系进行运算的
+
 $$
 \hat{A}\hat{B}f(x) = \hat{A}[\hat{B}(x)]
 $$
+
 就和矩阵运算一样，通常情况下是不能交换的
+
 $$
 AB \neq BA\\
 \hat{A}\hat{B} \neq = \hat{B}\hat{A}
 $$
+
 但如果某些算子性质比较友好的话，可以进行交换我们称其是可**交换的commutative** 
+
 $$
 \hat{A}\hat{B}f(x) = \hat{B}\hat{A}f(x)
 $$
+
 当然不能交换的话称为**noncommutative** 
 $$
 \hat{A}\hat{B}f(x) \neq \hat{B}\hat{A}f(x)
@@ -266,7 +272,6 @@ $$
 \sigma^2_A\sigma^2_B \geq\int\psi^*[\hat{A},\hat{B}]\psi\,dx
 $$
 
-
 如果将A，B转化为表示唯一和动量的算子则有以下表达
 $$
 [\hat{A}, \hat{B}] = [\hat{P}_x, \hat{X}] = -i\hbar \hat{I} \\
@@ -286,9 +291,9 @@ Hermitian 矩阵（厄米矩阵，Hermitian matrix）具有以下重要性质：
 
 1. **自共轭转置等于自身**：
     对于 Hermitian 矩阵 AA，满足
-
+   
    $A = A^H$
-
+   
    其中 $A^H$ 是 A 的共轭转置，即 $(A^H)_{ij} = \overline{A_{ji}}$。
 
 2. **特征值全为实数**：
@@ -296,31 +301,31 @@ Hermitian 矩阵（厄米矩阵，Hermitian matrix）具有以下重要性质：
 
 3. **特征向量对应不同特征值时正交**：
     若 Hermitian 矩阵 AA 具有不同的特征值 $\lambda_i \neq \lambda_j$，对应的特征向量 $v_i$ 和 $v_j$ 互相正交，即
-
+   
    $v_i^Hv_j=0$
-
+   
    这意味着 Hermitian 矩阵可以正交（酉）对角化。
 
-4.   **可以酉对角化**（Spectral Theorem）：
-
-    存在酉矩阵 U（即 $U^HU = I$），使得
-
+4. **可以酉对角化**（Spectral Theorem）：
+   
+   存在酉矩阵 U（即 $U^HU = I$），使得
+   
    $A=UDU^H $
-
+   
    其中 D 是对角矩阵，其对角元为 A 的特征值。
 
 5. **行列式为实数**：
     由于特征值为实数，Hermitian 矩阵的行列式也是实数。
 
 6. **迹（trace）为实数**：
-
+   
    $tr(A) = \sum \lambda_i$
-
+   
    其中 $\lambda_i $是 AA 的特征值，由于它们都是实数，所以迹也是实数。
 
 7. **半正定性**（如果所有特征值非负）：
     若 AA 的所有特征值均为非负，则 A 为**正定**或**半正定**矩阵，满足
-
+   
    $xHAx≥0,∀x≠0$
 
 8. **Hermitian 矩阵的指数仍是 Hermitian 矩阵**：
@@ -375,47 +380,49 @@ $$
 
 ## 例子来说明Hermitian算符
 
-1.  证明$\hat{A} = \frac{d}{dx}$不是Hermitian算符
-
+1. 证明$\hat{A} = \frac{d}{dx}$不是Hermitian算符
+   
    先列出判别式，再利用分布积分法可以得到
+   
    $$
    \int_{-\infty}^{\infty} f^* \frac{d}{dx} f \, dx = \int_{-\infty}^{\infty} f^* \frac{df}{dx} \, dx = \left| f^* f \right|_{-\infty}^{\infty} -\int_{-\infty}^{\infty} f\frac{df^*}{dx} \,dx
    $$
+   
    因为$f$是状态函数，所以他的归一性表明他在无穷端是0，因此前面一项为0，可以得到
+   
    $$
    \int_{-\infty}^{\infty} f^* \frac{d}{dx} f \, dx = -\int_{-\infty}^{\infty} \frac{d}{dx} f^* f \, dx
    $$
+   
    说明$\hat{A}$不是Hermitian算符
 
-2.  证明动量算子$\hat{P}_x = -i\hbar\frac{d}{dx}$是Hermitian算子
+2. 证明动量算子$\hat{P}_x = -i\hbar\frac{d}{dx}$是Hermitian算子
 
 $$
 \int_{-\infty}^{\infty} f^* \left( -i \frac{d}{dx} \right) f \, dx = -i \int_{-\infty}^{\infty} f^* \frac{df}{dx} \, dx = i \int_{-\infty}^{\infty} f\frac{df^*}{dx} \, dx \\
 \int_{-\infty}^{\infty} f\hat{P_x}^* f^* \, dx =\int_{-\infty}^{\infty} f \left( i \frac{d}{dx} \right) f^* \, dx = i \int_{-\infty}^{\infty} f \frac{df^*}{dx} \, dx
 $$
 
-​	所以我们得出动量是Hermitian算子
+​    所以我们得出动量是Hermitian算子
 
-3.  证明动能算子$\hat{T}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}$
-
+3. 证明动能算子$\hat{T}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}$
+   
    我们可以进行简单的两次分步积分
+   
    $$
    -\frac{\hbar^2}{2m} \int_{-\infty}^{\infty} f^* \frac{d^2 f}{dx^2} \, dx = \frac{\hbar^2}{2m} \left| f^* \frac{df}{dx} \right|_{-\infty}^{\infty} + \frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \frac{df^*}{dx} \frac{d f}{dx} \, dx \\
-   = \frac{\hbar^2}{2m} \left| \frac{df}{dx} f \right|_{-\infty}^{\infty} - \frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \frac{d^2 f^*}{dx^2} f \, dx\\ 
-   =  - \frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \frac{d^2 f^*}{dx^2} f \, dx\\ 
+= \frac{\hbar^2}{2m} \left| \frac{df}{dx} f \right|_{-\infty}^{\infty} - \frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \frac{d^2 f^*}{dx^2} f \, dx\\ 
+=  - \frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \frac{d^2 f^*}{dx^2} f \, dx\\ 
    $$
    
-
-   
-
    同样对共轭后的直接处理
+   
    $$
    \int_{-\infty}^{\infty} f \left( -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \right)^* f ^*\, dx = \int_{-\infty}^{\infty} f \left( -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \right) f^* \, dx \\ 
-   = -\frac{\hbar^2}{2m}  \int_{-\infty}^{\infty} f \frac{d^2f^*}{dx^2}\,dx
+= -\frac{\hbar^2}{2m}  \int_{-\infty}^{\infty} f \frac{d^2f^*}{dx^2}\,dx
    $$
-   就得到了二者相等，证明了动能算子也是Hermitian算子
-
    
+   就得到了二者相等，证明了动能算子也是Hermitian算子
 
 Hermitian算子一个更加高级的定义是
 $$
@@ -463,8 +470,6 @@ $$
 这个符号是由英国物理学家**Paul Dirac 保罗狄拉克**提出的。
 
 符号$| n \rang$被称为**kets** ，$\lang m|$被称为**bras**。这个命名法来源一bra c ket。 $\lang n|\hat{A}|m\rang$ 就像一个**框子括号bracket**一样对A进行积分。这种符号被叫做Dirac notation 或者 bracket notation 。
-
-
 
 ## Hermitian算子的特征函数是正交的
 
@@ -535,7 +540,7 @@ $$
 $$
 \sin \alpha \sin \beta = \frac{1}{2} \cos(\alpha - \beta) - \frac{1}{2} \cos(\alpha + \beta) \\
 \cos(\alpha + \beta) = \cos \alpha \cos \beta - \sin \alpha \sin \beta \\
-\cos(\alpha - \beta) = \cos \alpha \cos \beta + \sin \alpha \sin \beta
+\cos(\alpha - \beta) = \cos \alpha \cos \beta + \sin \alpha \sin \beta
 $$
 再将其带入到
 $$
@@ -569,7 +574,7 @@ $$
 我们考虑这两个状态方程的线性组合为$\phi$并对其进行算子计算得
 $$
 \hat{A} \phi = \hat{A}(c_1 \psi_1 + c_2 \psi_2) = c_1 \hat{A} \psi_1 + c_2 \hat{A} \psi_2\\
-= a_1 c_1 \psi_1 + a_2 c_2 \psi_2 = a_1 (c_1 \psi_1 + c_2 \psi_2) = a_1 \phi
+= a_1 c_1 \psi_1 + a_2 c_2 \psi_2 = a_1 (c_1 \psi_1 + c_2 \psi_2) = a_1 \phi
 $$
 所以我们可以得到结论，**简并的状态方程得线性组合依然是简并的**
 
@@ -579,7 +584,7 @@ $$
 $$
 现在我们来证明他，取线性组合为
 $$
-\phi_1 = \psi_1 \quad \text{and} \quad \phi_2 = \psi_2 + c \psi_1
+\phi_1 = \psi_1 \quad \text{and} \quad \phi_2 = \psi_2 + c \psi_1
 $$
 然后进行Dirca算子计算
 $$
@@ -593,4 +598,3 @@ $$
 这个过程可以扩展到n状态方程的简并情况，依此累加迭代实现。这个过程被称为**施密特正交化Gram-Schmidt orthonormalization procedure** 
 
 所以即使存在n个简并，我们可以使用施密特正交化来将其变成n个正交的函数，**从而组成一个标准正交的集合**。
-
