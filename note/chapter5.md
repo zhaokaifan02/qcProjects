@@ -15,6 +15,7 @@ $$
 f = -k(l-l_0) = -kx
 $$
  结果为负数力指向相反的的右侧，说明弹簧当前长度为($l>l_0$)说明被拉扯，则力为指向右侧。
+
 反之为正数说明力指向左侧，表明$l<l_0$，我们是用力按着弹簧的。
 
 一个小的k值意味着一个弱或松散的弹簧，一个大的k值意味着一个硬的弹簧 。**即k越大我们要使弹簧发生形变的力就越大**。
@@ -110,4 +111,94 @@ $$
 这个势能函数只是描述系统的空间坐标的函数 ，也就是我们说的势能只与空间位置有关。例如电势能，重力势能。
 
 在简谐振子得情况下，我们将空间推导到三维可以得到$V=V(x,y,z)$
+$$
+f_x(x, y, z) = -\frac{\partial V}{\partial x} \\
+f_y(x, y, z) = -\frac{\partial V}{\partial y}\\
+f_z(x, y, z) = -\frac{\partial V}{\partial z}
+$$
+或者使用拉普拉斯Laplace算子表现成向量形式
+$$
+\nabla = i \frac{\partial}{\partial x} + j \frac{\partial}{\partial y} + k \frac{\partial}{\partial z} \\
+\text{f}(x, y, z) = -\nabla V(x, y, z)
+$$
+这个式子隐含了这个系统是能量守恒的，我们从一维度来证明他(因为是向量，一个维度证明其他维度都证明了)。
 
+牛顿方程为
+$$
+m \frac{d^2 x}{dt^2} = -\frac{dV}{dx}
+$$
+之后对两边分别积分处理得到
+$$
+\int -\frac{dV}{dx} \, dx = -V(x) + \text{constant} \\
+\int m \frac{d^2 x}{dt^2} \, dx = m \int \frac{d^2 x}{dt^2} \, dt \\
+= \frac{m}{2} \int \frac{d}{dt} \left( \frac{dx}{dt} \right)^2 dt = \frac{m}{2} \left( \frac{dx}{dt} \right)^2 + \text{constant}
+$$
+因此整理后得到
+$$
+\frac{m}{2} \left( \frac{dx}{dt} \right)^2 + V(x) = \text{constant}
+$$
+动能加势能为一个常数。
+
+因此，我们看到，如果**力可以表示为一个势能的导数并且这个势能只是空间坐标的函数**，那么这个系统是能量守恒conservative的。
+
+
+
+# 双原子分子得简谐振动模型方程式包含了分子的约归质量Reduced Mass
+
+**简谐振子 simple harmonic oscillator** 模型式刻画**振动的双原子分子vibrating diatomic molecule** 的良好模型。
+
+但是双原子分子不想之前的固定墙面，而像两个物体被弹簧连起来。
+
+![1740409298101](.\figure\1740409298101.png)
+
+同样定义向左为正方向，两个物体由牛顿定理可得
+$$
+m_1 \frac{d^2 x_1}{dt^2} = k(x_2 - x_1 - l_0)\\
+m_2 \frac{d^2 x_2}{dt^2} = -k(x_2 - x_1 - l_0)
+$$
+这也符合牛顿第三定律，力的作用力与反作用力大小相等方向相反。
+
+将这两个式子加起来可以得到
+$$
+\frac{d^2}{dt^2} (m_1 x_1 + m_2 x_2) = 0
+$$
+之后我们定义一个**质心坐标center-of-mass coordinate**，其中$M=m_1+m_2$
+$$
+X = \frac{m_1 x_1 + m_2 x_2}{M}
+$$
+ 因此这个式子转化为
+$$
+M\frac{d^2X}{dt^2} =0
+$$
+表明质心收到的外力为0，以一个**恒定的动量constant momentum** 左右移动
+
+这个两个物体系统的震动必须依赖于两个物体的**相对分离relative separation**，或者依赖于**相对坐标relative coordinate**。
+$$
+x = x_2-x_1-l_0
+$$
+ 之后我们对一开始两个牛顿定理的式子分别除以$m_1$和$m_2$，之后再对他们做减法可以得到
+$$
+\frac{d^2 x_2}{dt^2}  -\frac{d^2 x_1}{dt^2} = -\frac{k}{m_2}(x_2 - x_1 - l_0) - \frac{k}{m_1}(x_2 - x_1 - l_0)
+$$
+整理得
+$$
+\frac{d^2}{dt^2}(x_2 - x_1) = -k \left( \frac{1}{m_1} + \frac{1}{m_2} \right)(x_2 - x_1 - l_0)
+$$
+我们定义一个变量
+$$
+\frac{1}{m_1} + \frac{1}{m_2} = \frac{m_1 + m_2}{m_1 m_2} = \frac{1}{\mu}
+$$
+再将$x=x_2-x_1-l_0$带入可以得到
+$$
+\mu \frac{d^2 x}{dt^2} + kx = 0
+$$
+这个$\mu$被称为**约化质量reduced mass**。我们将这个式子与之前的单震动固定模型比较
+$$
+m \frac{d^2 x}{dt^2} + kx = 0
+$$
+发现只是把质量换成了约化质量。因此，两体系统可以像一体系统一样处理。因此运动方程也如
+$$
+x(t) = A\sin(\omega t+\phi) \\
+\omega = \frac{k}{\mu}^{1/2}
+$$
+一般来说，如果势能只取决于两个物体之间的相对距离 。然后，我们可以引入相对坐标，如$x_2 - x_1$，并将两体问题简化为一体问题 。
