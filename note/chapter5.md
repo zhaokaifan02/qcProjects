@@ -473,7 +473,6 @@ $$
 
 $$
 \tilde{\omega}_{\text{obs}} = \tilde{\omega}_e v - \tilde{x}_e \tilde{\omega}_e v (v + 1), \quad v = 1, 2, \ldots
-
 $$
 
 主导线Fundamental为
@@ -528,15 +527,15 @@ $$
 
 其中$H_v(x)$被称为Hermite polynomials。 v表示次数
 
-![](C:\msys64\home\fan%20zhaokai\qcProjects\note\figure\2025-02-27-19-50-36-image.png)
+![](.\figure\2025-02-27-19-50-36-image.png)
 
 将其带入后可以得到一些简单的状态函数
 
-![](C:\msys64\home\fan%20zhaokai\qcProjects\note\figure\2025-02-27-20-09-05-image.png)
+![](.\figure\2025-02-27-20-09-05-image.png)
 
 我们可以画出这些函数的图像，以及他们的平方所代表的概率密度图像
 
-![](C:\msys64\home\fan%20zhaokai\qcProjects\note\figure\2025-02-27-20-10-26-image.png)
+![](.\figure\2025-02-27-20-10-26-image.png)
 
 现在我们来验证一下这个这些结果确实是前面薛定谔方程的解
 
@@ -600,7 +599,7 @@ $$
 现在我们继续挖掘一下Hermite多项式的性质。
 先回忆一下什么叫奇函数什么叫偶函数。关于y轴对称的是偶函数，偶函数在对称区间的积分时可以两倍单边区间的积分。而奇函数关于原点对称，对称区间积分相互抵消为0。
 
-![](C:\msys64\home\fan%20zhaokai\qcProjects\note\figure\2025-02-27-21-24-42-image.png)
+![](.\figure\2025-02-27-21-24-42-image.png)
 
 而Hermite多项式随着设置的最大次数不同，他的奇偶性要分开讨论。
 对于$H_v(\delta)$ ,v是奇数就是奇数，v是偶数就是偶数。而奇函数的对称区间积分为0。
@@ -613,7 +612,7 @@ $$
 后面的小尾巴$e^{-\alpha x^2/2}$ 是偶函数，所以这个函数的奇偶性就由$H_v$完全决定，也就是由$v$而完全决定。我们可以计算一下平均位移
 
 $$
-\langle x \rangle = \langle v | x | v+ \rangle = \int_{-\infty}^{\infty} \psi_v(x) \, x \, \psi_v(x) \, dx = 0
+\langle x \rangle = \langle v | x | v \rangle = \int_{-\infty}^{\infty} \psi_v(x) \, x \, \psi_v(x) \, dx = 0
 $$
 
 可以看到无论v是奇函数还是偶函数，他的平方一定是偶函数，因此不难得到平均位移是0。
@@ -638,11 +637,103 @@ $$
 之后我们令$\delta = \alpha^{1/2}x$,并结合偶函数的可以得到
 
 $$
-\langle x^2 \rangle = \frac{2}{\alpha\pi^{1/2}\int_{0}_{\infty}d\delta \delta^2 e^{-delta^2}
+\langle x^2 \rangle = \frac{2}{\alpha\pi^{1/2}}\int_0^{\infty}d\delta\,\delta^2e^{-\delta^2}
 $$
 
 其中后面的是伽马函数,按照伽马函数的性质
 
 $$
-\G
+\Gamma(z) = \int_0^\infty t^{z-1} e^{-t} \, dt \quad \text{对于 } z > 0
 $$
+具体性质包括
+
+
+$$
+\Gamma(n) = (n-1)! \quad \text{对于 } n \in \mathbb{N} \\
+\Gamma(z+1) = z \Gamma(z) \\
+\Gamma\left(\frac{1}{2}\right) = \sqrt{\pi} \\
+$$
+同样的我们可以做一些变换令$t = x^2$ 则有$dt = 2xdx$ ，代入得
+$$
+\Gamma(z) = 2\int_0^{\infty}x^{2z-1}e^{-x^2}dx 
+$$
+因此我们回到之前的$\lang x^2\rang$的计算中，后面那一块是$\Gamma(\frac{3}{2})$，利用性质得到$\Gamma(\frac{3}{2})= \frac{1}{2}\Gamma(\frac{1}{2}) = \frac{\sqrt{\pi}}{2}$
+
+整体代入得
+$$
+\langle x^2 \rangle = \frac{2}{\alpha\pi^{1/2}}\int_0^{\infty}d\delta\,\delta^2e^{-\delta^2} = \frac{1}{2\alpha} = \frac{\hbar}{2(\mu k^{1/2})}
+$$
+这是在$H_0$下，现在我们将其推广到$H_v$上
+$$
+\langle x^2 \rangle = \lang v \, x^2 \, v\rang = \int_{-\infty}^{\infty} dx \, \psi_v^*(x) \, x^2 \, \psi_v(x) \\
+= N_v^2 \int_{-\infty}^{\infty} dx \, e^{-\alpha x^2} \, H_n\left(\alpha^{1/2} x\right) \, x^2 \, H_n\left(\alpha^{1/2} x\right) \\
+= \frac{N_v^2}{\alpha^{3/2}} \int_{-\infty}^{\infty} d\xi \, e^{-\xi^2} \, H_n(\xi) \, \xi^2 \, H_n(\xi)
+$$
+Hermite多项式还有很多奇怪的性质可以用于算积分，比如以下这个**递归公式recursion formula** 
+$$
+H_{v+1}(\xi) - 2\xi H_{v}(\xi) + 2v H_{v-1}(\xi) = 0
+$$
+现在我们举个例子来利用Hermite多项式来计算积分。对于任意能级对应的波动函数的平均位置，我们可以写为
+$$
+\langle \xi \rangle = \int_{-\infty}^{\infty} \psi_v(\xi) \, \xi \, \psi_v(\xi) \, d\xi
+$$
+之前的证明思路是利用Hermite多项式的奇偶性来证明他为0的。现在我们用递归的思路走一遍。先把他展开
+$$
+\langle \xi \rangle = N_v^2 \int_{-\infty}^{\infty} d\xi \, H_v(\xi) \, \xi \, H_v(\xi) \, e^{-\xi^2}
+$$
+再对递归公式进行变形，将要求的放在最左边
+$$
+\xi H_v(\xi) = v H_{v-1}(\xi) + \frac{1}{2} H_{v+1}(\xi)
+$$
+带入并展开得到
+$$
+\langle \xi \rangle = v N_v^2 \int_{-\infty}^{\infty} d\xi \, H_{v}(\xi) H_{v-1}(\xi) \, e^{-\xi^2} + \frac{N_v^2}{2} \int_{-\infty}^{\infty} d\xi \, H_{v}(\xi) H_{v+1}(\xi) \, e^{-\xi^2}
+$$
+后面两块分别是
+$$
+\psi_v = H_v(\xi)e^{-\xi^2/2} \\
+\psi_{v-1} = H_{v-1}(\xi) e^{-\xi^2/2}
+$$
+因此这些地方分别是正交的，所以整理后为0。**Hermite多项式很有用！**
+
+所以，我们在算平方项时有了更好的思路。
+$$
+\langle \xi^2 \rangle = N_v^2 \int_{-\infty}^{\infty} d\xi \, H_v(\xi) \, \xi^2 \, H_v(\xi) \, e^{-\xi^2}
+$$
+我们先对前面的变形后的递归公式同时乘上$\xi$可以得到
+$$
+\xi^2 H_v(\xi) = v \xi H_{v-1}(\xi) + \frac{1}{2} \xi H_{v+1}(\xi)
+$$
+然后把他们二次展开
+$$
+\xi^2 H_v(\xi) = \nu \xi H_{v-1}(\xi) + \frac{1}{2} \xi H_{v+1}(\xi) \\
+= v (v-1) H_{v-2}(\xi) + \left( v + \frac{1}{2} \right) H_{v}(\xi) + \frac{1}{4} H_{v+2}(\xi)
+$$
+再将其带入到后面
+$$
+= N_v^2 \int_{-\infty}^{\infty} d\xi \, H_v(\xi) \left[ v(v-1) H_{v-2}(\xi) + \left( v + \frac{1}{2} \right) H_{v}(\xi) + \frac{1}{4} H_{v+2}(\xi) \right]
+$$
+整理得到
+$$
+\langle \xi^2 \rangle = \langle v | \xi^2 | v \rangle \\
+= N_v^2 \int_{-\infty}^{\infty} d\xi \, H_v(\xi) \left[ \nu(v-1) H_{v-2}(\xi) + \left( \nu + \frac{1}{2} \right) H_{v}(\xi) + \frac{1}{4} H_{v+2}(\xi) \right]
+$$
+再利用正交性质和归一化的性质可以得到
+$$
+\langle \xi^2 \rangle = \left( v + \frac{1}{2} \right) N_v^2 \int_{-\infty}^{\infty} d\xi \, H_{v}(\xi) H_{v}(\xi) \, e^{-\xi^2}\\
+=v+\frac{1}{2}
+$$
+将$\xi= \alpha^{1/2}x$带入得
+$$
+\langle x^2 \rangle = \frac{1}{\alpha} \langle \xi^2 \rangle = \frac{1}{\alpha} \left( v + \frac{1}{2} \right) = \frac{\hbar}{(\mu k)^{1/2}} \left( v + \frac{1}{2} \right)
+$$
+
+
+在v等于0的情况下和之前我们得到的结果相同。
+
+
+
+# 多原子分子的振动可以被简正坐标
+
+
+
