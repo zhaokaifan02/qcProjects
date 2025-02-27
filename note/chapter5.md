@@ -439,12 +439,6 @@ $$
 G(v) = \frac{E_v}{hc}\\
 $$
 
-
-
-
-
-
-
 我们就可以画出能级的具体图像。注意，能级的间隔并不像谐振子的那样相等，事实上，它们的间隔**随着v的增大而减小**。
 
 ![](.\figure\2025-02-27-16-54-34-image.png)
@@ -469,13 +463,9 @@ $$
 \tilde{\omega}_{obs} = G(v)-G(0) = \tilde{\omega}_ev-\tilde{x}_e\tilde{\omega}_ev(v+1)
 $$
 
-
-
 这里的$\tilde{\omega}_e$和$\tilde{x}_e$ 都是通过实验测出来的常数。我们用一个例子来体会一下
 
 ## NaF的overtone计算
-
-
 
 对于23Na19F，我们经过实验测得非协性震动的系数为$\tilde{\omega}_e=536.10 cm^{-1}$和 $\tilde{x}_e \tilde{\omega}_e=3.4cm^{-1} $请计算一下第一和第二overtones的频率。
 
@@ -513,6 +503,146 @@ $$
 
 可以发现在加入了非协性之后，预测更加准确了。
 
+# 谐振子状态方程蕴含着Hermite多项式
 
+对于前面的简振子模型(胡克方程替代)，解得的不同的$E_v$对应的状态方程是非简并的
 
-# 
+$$
+\psi_n(x) \propto H_n(x) e^{-x^2/2}
+$$
+
+其中$H_{n}(x)$表示次数为$x$的Hermite多项式。在这里的简谐振子模型中，我们归一化解得为
+
+$$
+\psi_v(x) = |v\rang = N_vH_v(\alpha^{1/2}x)e^{-\alpha x^2/2}
+$$
+
+这个符号表示能级为$v$的波动方程，而$\lang v|$表示这个方程的共轭
+
+其中 $\alpha$和归一化参数$N_v$如下
+
+$$
+\alpha = \frac{k\mu}{\hbar^2}^{1/2} \\
+N_v = \frac{1}{(2^v v!)^{1/2}} \left( \frac{\alpha}{\pi} \right)^{1/4}
+$$
+
+其中$H_v(x)$被称为Hermite polynomials。 v表示次数
+
+![](C:\msys64\home\fan%20zhaokai\qcProjects\note\figure\2025-02-27-19-50-36-image.png)
+
+将其带入后可以得到一些简单的状态函数
+
+![](C:\msys64\home\fan%20zhaokai\qcProjects\note\figure\2025-02-27-20-09-05-image.png)
+
+我们可以画出这些函数的图像，以及他们的平方所代表的概率密度图像
+
+![](C:\msys64\home\fan%20zhaokai\qcProjects\note\figure\2025-02-27-20-10-26-image.png)
+
+现在我们来验证一下这个这些结果确实是前面薛定谔方程的解
+
+$$
+\psi_0(x) = | 0 \rangle = \left( \frac{\alpha}{\pi} \right)^{1/4} e^{-\alpha x^2/2}
+$$
+
+将其得到的能量 $E_0 = h\nu \left( v + \frac{1}{2} \right)$，代入得
+
+$$
+\frac{d^2 \psi_0}{dx^2} + \frac{2\mu}{\hbar^2} \left( E_0 - \frac{1}{2} k x^2 \right) \psi_0(x) = 0\\
+
+\nu = \frac{1}{2\pi} \left( \frac{k}{\mu} \right)^{1/2}
+$$
+
+得到
+
+$$
+\left( \frac{\alpha}{\pi} \right)^{1/4} \left( -\alpha x^2 e^{-\alpha x^2/2} - ae^{-\alpha x^2/2} \right) + \frac{2\mu}{\hbar^2} \left( \frac{\hbar \omega}{2} - \frac{k x^2}{2} \right) \left( \frac{\alpha}{\pi} \right)^{1/4} e^{-\alpha x^2/2} = 0
+$$
+
+整理得到
+
+$$
+\left( \alpha^2 x^2 - \alpha \right) + \left( \frac{\mu \omega}{\hbar} - \frac{\mu k}{\hbar^2} x^2 \right) = 0\\
+\alpha = \frac{k\mu}{\hbar^2}^{1/2}\\
+\omega = \frac{k}{\mu}^{1/2}
+$$
+
+整理得可以发现左边确实是0。
+
+同样可以证明这个$\psi_v$是归一化并且正交的，即
+
+$$
+\int_{-\infty}^{\infty} dx \, \psi_v(x) \psi_{v'}(x) = \langle v | v' \rangle = 0 \quad \text{for } v \neq v'
+$$
+
+更加具体的将数值带入可以得到
+
+$$
+\int_{-\infty}^{\infty} dx \, H_v\left( \alpha^{1/2} x \right) H_{v'}\left( \alpha^{1/2} x \right) e^{-\alpha x^2} = \int_{-\infty}^{\infty} d\delta \, H_v(\delta) H_{v'}(\delta) e^{-\delta^2} = 0 \quad \text{for } v \neq v'
+$$
+
+我们可以再挖掘一下Hermite多项式的性质，他在weighting function$e^{-delta^2}$之下是正交的。
+比如$\psi_0$和$\psi_1$
+
+$$
+\psi_0(x) = \left( \frac{\alpha}{\pi} \right)^{1/4} e^{-\alpha x^2/2}\quad \text{and} \quad\psi_1(x) = \left( \frac{4 \alpha^{3}}{\pi} \right)^{1/4} x e^{-\alpha x^2/2}
+$$
+
+具体计算后得到
+
+$$
+\int_{-\infty}^{\infty} \psi_1(x) \psi_0(x) \, dx = \langle 1 | 0 \rangle = \left( \frac{2\alpha^2}{\pi} \right)^{1/2} = \int_{-\infty}^{\infty} x e^{-\alpha x^2/2} \, dx = 0
+$$
+
+因为最后这个函数是一个奇函数，所以他的对称区间积分就是0。
+
+# Hermite多项式要么是偶函数，要么是奇函数
+
+现在我们继续挖掘一下Hermite多项式的性质。
+先回忆一下什么叫奇函数什么叫偶函数。关于y轴对称的是偶函数，偶函数在对称区间的积分时可以两倍单边区间的积分。而奇函数关于原点对称，对称区间积分相互抵消为0。
+
+![](C:\msys64\home\fan%20zhaokai\qcProjects\note\figure\2025-02-27-21-24-42-image.png)
+
+而Hermite多项式随着设置的最大次数不同，他的奇偶性要分开讨论。
+对于$H_v(\delta)$ ,v是奇数就是奇数，v是偶数就是偶数。而奇函数的对称区间积分为0。
+对于胡克函数模拟的波函数为
+
+$$
+\psi_v(x) = |v\rang = N_vH_v(\alpha^{1/2}x)e^{-\alpha x^2/2}
+$$
+
+后面的小尾巴$e^{-\alpha x^2/2}$ 是偶函数，所以这个函数的奇偶性就由$H_v$完全决定，也就是由$v$而完全决定。我们可以计算一下平均位移
+
+$$
+\langle x \rangle = \langle v | x | v+ \rangle = \int_{-\infty}^{\infty} \psi_v(x) \, x \, \psi_v(x) \, dx = 0
+$$
+
+可以看到无论v是奇函数还是偶函数，他的平方一定是偶函数，因此不难得到平均位移是0。
+而对于动量来说，他的平均动量为
+
+$$
+\langle p \rangle = \langle v | \hat{P}_x | v \rangle = \int_{-\infty}^{\infty} \psi_v(x) \left( -i \hbar \frac{d}{dx} \right) \psi_v(x) \, dx
+$$
+
+奇函数导完是偶函数，偶函数导完是奇函数，
+
+因此这个积分的结果一定是奇函数。所以我们可以使用奇函数的对称性，将其转化为0到无穷上的二倍积分。
+
+# Hermite多项式还有很多有意思的性质
+
+我们来算一下基态状态$H_0(\delta)=1$下的$\lang x^2\rang$的值
+
+$$
+\langle x^2 \rangle = \left( \frac{\alpha}{\pi} \right)^{1/2} \int_{-\infty}^{\infty} dx \, x^2 e^{-\alpha x^2}
+$$
+
+之后我们令$\delta = \alpha^{1/2}x$,并结合偶函数的可以得到
+
+$$
+\langle x^2 \rangle = \frac{2}{\alpha\pi^{1/2}\int_{0}_{\infty}d\delta \delta^2 e^{-delta^2}
+$$
+
+其中后面的是伽马函数,按照伽马函数的性质
+
+$$
+\G
+$$
