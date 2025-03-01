@@ -645,6 +645,7 @@ $$
 $$
 \Gamma(z) = \int_0^\infty t^{z-1} e^{-t} \, dt \quad \text{对于 } z > 0
 $$
+
 具体性质包括
 
 
@@ -653,77 +654,108 @@ $$
 \Gamma(z+1) = z \Gamma(z) \\
 \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi} \\
 $$
+
 同样的我们可以做一些变换令$t = x^2$ 则有$dt = 2xdx$ ，代入得
+
 $$
 \Gamma(z) = 2\int_0^{\infty}x^{2z-1}e^{-x^2}dx 
 $$
-因此我们回到之前的$\lang x^2\rang$的计算中，后面那一块是$\Gamma(\frac{3}{2})$，利用性质得到$\Gamma(\frac{3}{2})= \frac{1}{2}\Gamma(\frac{1}{2}) = \frac{\sqrt{\pi}}{2}$
 
+因此我们回到之前的$\lang x^2\rang$的计算中，后面那一块是$\Gamma(\frac{3}{2})$，利用性质得到$\Gamma(\frac{3}{2})= \frac{1}{2}\Gamma(\frac{1}{2}) = \frac{\sqrt{\pi}}{2}$
 整体代入得
+
 $$
 \langle x^2 \rangle = \frac{2}{\alpha\pi^{1/2}}\int_0^{\infty}d\delta\,\delta^2e^{-\delta^2} = \frac{1}{2\alpha} = \frac{\hbar}{2(\mu k^{1/2})}
 $$
+
 这是在$H_0$下，现在我们将其推广到$H_v$上
+
 $$
 \langle x^2 \rangle = \lang v \, x^2 \, v\rang = \int_{-\infty}^{\infty} dx \, \psi_v^*(x) \, x^2 \, \psi_v(x) \\
 = N_v^2 \int_{-\infty}^{\infty} dx \, e^{-\alpha x^2} \, H_n\left(\alpha^{1/2} x\right) \, x^2 \, H_n\left(\alpha^{1/2} x\right) \\
 = \frac{N_v^2}{\alpha^{3/2}} \int_{-\infty}^{\infty} d\xi \, e^{-\xi^2} \, H_n(\xi) \, \xi^2 \, H_n(\xi)
 $$
+
 Hermite多项式还有很多奇怪的性质可以用于算积分，比如以下这个**递归公式recursion formula** 
+
 $$
 H_{v+1}(\xi) - 2\xi H_{v}(\xi) + 2v H_{v-1}(\xi) = 0
 $$
+
 现在我们举个例子来利用Hermite多项式来计算积分。对于任意能级对应的波动函数的平均位置，我们可以写为
+
 $$
 \langle \xi \rangle = \int_{-\infty}^{\infty} \psi_v(\xi) \, \xi \, \psi_v(\xi) \, d\xi
 $$
-之前的证明思路是利用Hermite多项式的奇偶性来证明他为0的。现在我们用递归的思路走一遍。先把他展开
+
+之前的证明思路是利用Hermite多项式的奇偶性来证明他为0的。现在我们用递归的思路走一遍。先把
+他展开
+
 $$
 \langle \xi \rangle = N_v^2 \int_{-\infty}^{\infty} d\xi \, H_v(\xi) \, \xi \, H_v(\xi) \, e^{-\xi^2}
 $$
+
 再对递归公式进行变形，将要求的放在最左边
+
 $$
 \xi H_v(\xi) = v H_{v-1}(\xi) + \frac{1}{2} H_{v+1}(\xi)
 $$
+
 带入并展开得到
+
 $$
 \langle \xi \rangle = v N_v^2 \int_{-\infty}^{\infty} d\xi \, H_{v}(\xi) H_{v-1}(\xi) \, e^{-\xi^2} + \frac{N_v^2}{2} \int_{-\infty}^{\infty} d\xi \, H_{v}(\xi) H_{v+1}(\xi) \, e^{-\xi^2}
 $$
+
 后面两块分别是
+
 $$
 \psi_v = H_v(\xi)e^{-\xi^2/2} \\
 \psi_{v-1} = H_{v-1}(\xi) e^{-\xi^2/2}
 $$
+
 因此这些地方分别是正交的，所以整理后为0。**Hermite多项式很有用！**
 
 所以，我们在算平方项时有了更好的思路。
+
 $$
 \langle \xi^2 \rangle = N_v^2 \int_{-\infty}^{\infty} d\xi \, H_v(\xi) \, \xi^2 \, H_v(\xi) \, e^{-\xi^2}
 $$
+
 我们先对前面的变形后的递归公式同时乘上$\xi$可以得到
+
 $$
 \xi^2 H_v(\xi) = v \xi H_{v-1}(\xi) + \frac{1}{2} \xi H_{v+1}(\xi)
 $$
+
 然后把他们二次展开
+
 $$
 \xi^2 H_v(\xi) = \nu \xi H_{v-1}(\xi) + \frac{1}{2} \xi H_{v+1}(\xi) \\
 = v (v-1) H_{v-2}(\xi) + \left( v + \frac{1}{2} \right) H_{v}(\xi) + \frac{1}{4} H_{v+2}(\xi)
 $$
+
 再将其带入到后面
+
 $$
 = N_v^2 \int_{-\infty}^{\infty} d\xi \, H_v(\xi) \left[ v(v-1) H_{v-2}(\xi) + \left( v + \frac{1}{2} \right) H_{v}(\xi) + \frac{1}{4} H_{v+2}(\xi) \right]
 $$
+
 整理得到
+
 $$
 \langle \xi^2 \rangle = \langle v | \xi^2 | v \rangle \\
 = N_v^2 \int_{-\infty}^{\infty} d\xi \, H_v(\xi) \left[ \nu(v-1) H_{v-2}(\xi) + \left( \nu + \frac{1}{2} \right) H_{v}(\xi) + \frac{1}{4} H_{v+2}(\xi) \right]
 $$
+
 再利用正交性质和归一化的性质可以得到
+
 $$
 \langle \xi^2 \rangle = \left( v + \frac{1}{2} \right) N_v^2 \int_{-\infty}^{\infty} d\xi \, H_{v}(\xi) H_{v}(\xi) \, e^{-\xi^2}\\
 =v+\frac{1}{2}
 $$
 将$\xi= \alpha^{1/2}x$带入得
+
 $$
 \langle x^2 \rangle = \frac{1}{\alpha} \langle \xi^2 \rangle = \frac{1}{\alpha} \left( v + \frac{1}{2} \right) = \frac{\hbar}{(\mu k)^{1/2}} \left( v + \frac{1}{2} \right)
 $$
@@ -733,7 +765,104 @@ $$
 
 
 
-# 多原子分子的振动可以被简正坐标
+# 多原子分子的振动可以被简正坐标表示
 
+多原子分子的振动谱在谐振子近似下是很容易理解的，关键是引入**简正坐标normal coordinates** 。
 
+考虑一个含有N个**原子核nuclei**的分子。这个分子在空间上的完整描述需要3N坐标，每个原子核有三个笛卡尔坐标。我们说N原子分子总共有3N个**自由度degrees of freedom**。在这3N个坐标中，我们可以使用3个来指定他的**质心degrees of freedom**。
+
+## 分子的质心与沿着质心平移
+
+先介绍以下质心的概念，对于分子来说，分子中每个原子的质量和它们的三维坐标（x, y, z）我们都知道。因此质心的坐标$X_{cm},Y_{cm},Z_{cm}$可以这样求出。
+
+$$
+X_{cm} = \frac{\sum_{i=1}^nm_ix_i}{\sum_{i=1}^nm_i}\\
+Y_{cm} = \frac{\sum_{i=1}^nm_iy_i}{\sum_{i=1}^nm_i}\\
+Z_{cm} = \frac{\sum_{i=1}^nm_iz_i}{\sum_{i=1}^nm_i}
+$$
+
+  这里可以看出，质心并不一定落在原子上，因为他是一个理论上的点，表示整个分子质量均匀分布的中心。
+
+这样的话我们可以平移坐标系的原点，**调整坐标系坐标轴的位置，使得某个原子正好是这个分子的质心**。
+
+所谓沿着质心的运动，就是分子的平移运动。比如质心的x坐标增加了，这意味着分子向正方向x轴运动。
+
+沿着这三个坐标的运动对应于分子质心的平动，所以我们称这三个坐标为平**动自由度translational degrees of freedom 。**
+
+对于线性分子以及非线性分子，无论他们的原子数量是多少个，描述平移运动的自由度都是3。
+
+## 旋转运动与振动
+
+同样的具体推理细节我们不必理解。我们只需要知道，对于旋转这个运动，可以定义旋转**自由度degrees of rotational freedom。** 线型分子需要用2个坐标描述，也就是选中两个坐标作为旋转原点。非线性分子需要3个坐标。之后剩下的3N-5和3N-6个坐标被称为**振动自由度vibrational degrees of freedom**。这些被总结为
+
+![1740823307610](.\figure\1740823307610.png)
+
+用一些现实里的分子例子可以有
+
+![1740823399903](.\figure\1740823399903.png)
+
+**在没有外场的情况下，分子的能量不取决于其质心的位置或朝向**。因此多原子分子的势能仅仅由这些振动坐标决定，我们一般用$N_{vib}$来表示振动自由度。因此参照双原子分子的一维模型，多原子分子的三维模型所表示的势能可以写为
+
+$$
+\Delta V = V(x_1, x_2, \ldots, x_{N_{vib}}) - V(0, 0, \ldots, 0) = -\frac{1}{2} \sum_{i=1}^{N_{vib}} \sum_{j=1}^{N_{vib}} \left( \frac{\partial^2 V}{\partial x_i \partial x_j} \right)_{x_i, x_j = 0} x_i x_j + \ldots \\
+= \frac{1}{2} \sum_{i=1}^{N_{vib}} \sum_{j=1}^{N_{vib}} f_{ij} x_i x_j + \cdots
+$$
+
+不需要理解，直接背会。 一般来说，按照泰勒展开的模式，后面还有更高次项的$x_i$，但这些非调和项就被忽略了。因为这里有交叉项，而交叉项的存在使得对应的薛定谔方程的解很难得到 。根据经典力学的定理，允许我们消去这些交叉项。细节过于专门化，在这里不讨论，但是使用矩阵代数的一个简单过程可以用来找到一组新的坐标 $\{Q_i\}$,因此可以整理为
+
+$$
+\Delta V = \frac{1}{2} \sum_{j=1}^{N_{vib}} F_j Q_j^2
+$$
+
+在势能确定之后，整体的薛定谔方程的哈密顿算子可以写作为
+
+$$
+\hat{H}_{vib} = - \sum_{j=1}^{N_{vib}} \frac{\hbar^2}{2\mu_j} \frac{d^2}{dQ_j^2} + \frac{1}{2} \sum_{j=1}^{N_{vib}} F_j Q_j^2
+$$
+
+按照前面我们讲的独立运动的各个原子所在的系统，哈密顿算子可以写成若干独立的之和。
+$$
+\hat{H}_{vib} = \sum_{j=1}^{N_{vib}} \hat{H}_{vib,j} = \sum_{j=1}^{N_{vib}} \left( -\frac{\hbar^2}{2\mu_j} \frac{d^2}{dQ_j^2} + \frac{1}{2} F_j Q_j^2 \right)
+$$
+同样的这个$N_{vib}$个薛定谔方程得到的$N_{vib}$个波动解，整体的波动方程的解可以得到
+$$
+\psi_{vib}(Q_1, Q_2, \ldots, Q_{vib}) = \psi_{vib,1}(Q_1) \psi_{vib,2}(Q_2) \cdots \psi_{vib,N_{vib}}(Q_{vib})
+$$
+同样其对应的能量可以写为
+$$
+E_{vib} = \sum_{j=1}^{N_{vib}} h\nu_j \left( v_j + \frac{1}{2} \right) \quad \text{each } v_j = 0, 1, 2, \ldots
+$$
+在谐振子近似下，多原子分子的振动运动表现为$N_{vib}$个独立谐波振荡的乘积。在没有简并的情况下，每一个波动方程都有自己独立的主频率$\nu_j$。以一个具体的例子可以看出，比如H2CO这个四原子分子，他有6个独立的状态。
+
+![1740825160970](.\figure\1740825160970.png)
+
+固定了能量之后，可以看到每个原子以相同的频率和相位围绕其平衡位置振荡，但不同的原子具有不同的振荡幅度。 
+
+# 简谐振子的选择规则
+
+谐振子状态之间的转换只能发生在相邻能级之间。非相邻能级的转化要经过非简谐振子的描述。
+
+这种规则被称为**选择规则selection rule**。
+
+如果一个谐振子受到沿z方向传播的电磁辐射照射，那么振子从状态v跃迁到状态v'的概率与积分的平方成正比。
+$$
+\langle v | \mu_z | v' \rangle = \int_{-\infty}^{\infty} dx \, \psi_v(x) \mu_z(x) \psi_{v'}(x)
+$$
+其中$\mu_z$是**偶极矩dipole moment**的z分量。这种积分在光谱学中经常出现，称为偶极子跃迁矩**dipole transition moment** 。 现在我们可以使用泰勒展开对$\mu_z$进行处理，物理上称为**平衡核分解equilibrium nuclear separation** 。
+$$
+\mu_z(x) = \mu_0 + \left( \frac{d\mu}{dx} \right)_0 x + \cdots
+$$
+$\mu_0$是平衡键长处的偶极矩，x是从平衡值出发的位移。因此当$x=0$ 时，$\mu_z = \mu_0$，之后我们把这个展开带入前面的状态跃迁概率方程。
+$$
+\langle v | \mu_z | v \rangle = \mu_0\int_{-\infty}^{\infty} dx \, \psi_v(x) x \psi_v(x) + \left( \frac{d\mu}{dx} \right)_0 \int_{-\infty}^{\infty} dx \, \psi_v(x) x \psi_v(x)
+$$
+如果$v\neq v'$，由于谐振子方程的正交性第一项为0。再由前面提到的Hermite多项式的性质
+$$
+\xi H_v(\xi) = v H_{v-1}(\xi) + \frac{1}{2} H_{v+1}(\xi)
+$$
+带入前面得双原子简谐振子得波动函数为
+$$
+\langle v | \mu_z | v \rangle = \frac{N_1 N_{v'}}{\alpha} \left( \frac{d\mu}{d\xi} \right)_{0} \int_{-\infty}^{\infty} H_{v'}(\xi) \left[ v H_{v-1}(\xi) + \frac{1}{2} H_{v+1}(\xi) \right] e^{-\xi^2} d\xi
+$$
+现在再利用Hermite多项式得正交性可以我们可以看到如果$v'\neq v\pm1$时，这个能级跃迁得概率就是0了。因此，谐振子近似下振动跃迁的选择规则就是$\Delta v = \pm 1$。 而在积分前面得因子$\frac{d\mu}{d\xi}$时刻提醒着我们能级跃迁得概率随着$\xi = \alpha^{1/2}x$的变化也在随时变化。
 
