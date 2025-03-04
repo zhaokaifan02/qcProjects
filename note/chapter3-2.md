@@ -378,7 +378,6 @@ $$
 因此我们可以推出
 $$
 
-
 \hat{H}_1(s) \phi_n(s) = E_n \phi_n(s)\\
 \hat{H}_2(w) \phi_m(w) = E_m \phi_m(w)
 $$
