@@ -12,7 +12,6 @@ $$
 
 这是两边同时乘上他的共轭$\psi_0$ 并进行积分得到
 
-
 $$
 E_0 = \frac{\int \psi_0^* \hat{H} \psi_0 \, d\tau}{\int \psi_0^* \psi_0 \, d\tau} = \frac{\langle \psi_0 | \hat{H} | \psi_0 \rangle}{\langle \psi_0 | \psi_0 \rangle}
 $$
@@ -109,6 +108,7 @@ $$
 \phi(r) = \frac{8}{3^{3/2} \pi} \left( \frac{1}{\pi a_0^3} \right)^{1/2} e^{- \left( \frac{8}{9\pi} \right) r^{-2} a_0^2}
 
 $$
+
 ![1741677346099](D:\msys64\home\31932\qc\qcProjects\note\figure\1741677346099.png)
 
 在这种情况下，计算的与真实的准确率接近80%。这一结果是通过使用仅含一个变分参数的试探函数得出的。 通过使用包含更多参数的更灵活的试函数，我们可以逐步获得更好的结果。
@@ -480,4 +480,85 @@ V(x) =
 \end{cases}
 $$
 
-在选取基底时，我们采用
+在选取基底时，我们采用之前的零势能情况下的的两个三角函数的线性组合
+
+$$
+\phi(x)=c_1\left(\frac{2}{a}\right)^{1/2}\sin\frac{\pi x}{a}+c_2\left(\frac{2}{a}\right)^{1/2}\sin\frac{2\pi x}{a}
+$$
+
+
+
+之后我们来计算一下需要的参数
+
+$$
+H_1  =\left\langle\psi_{1}^{(0)}\left|\hat{H}^{(0)}+\frac{V_{0}x}{a}\right|\psi_{1}^{(0)}\right\rangle \\ 
+\\
+=\frac{h^{2}}{8ma^{2}}+\frac{2V_{0}}{a^{2}}\int_{0}^{a}dxx\sin^{2}\frac{\pi x}{a}=\frac{h^{2}}{8ma^{2}}+\frac{V_{0}}{2} \\
+H_{22}  =\frac{4h^{2}}{8ma^{2}}+\frac{2V_{0}}{a^{2}}\int_{0}^{a}dxx\sin^{2}\frac{2\pi x}{a}=\frac{4h^{2}}{8ma^{2}}+\frac{V_{0}}{2} \\
+ H_{12}=H_{21}  =\frac{2V_0}{a^2}\int_0^adxx\sin\frac{\pi x}{a}\sin\frac{2\pi x}{a}=-\frac{16V_0}{9\pi^2} \\
+S_{11}=S_{22}  =1\quad\mathrm{and}\quad S_{12}=0
+$$
+
+
+
+之后我们就可以列出久期行列式与久期方程
+
+$$
+\left.\left|
+\begin{array}
+{cc}\frac{h^2}{8ma^2}+\frac{V_0}{2}-E & -\frac{16V_0}{9\pi^2} \\
+ \\
+-\frac{16V_0}{9\pi^2} & \frac{4h^2}{8ma^2}+\frac{V_0}{2}-E
+\end{array}\right.\right|=0
+$$
+
+
+
+令,
+
+$$
+\varepsilon = \frac{8ma^2E}{h^2} \\
+v_0 = \frac{8ma^2V_0}{h^2} \\
+$$
+
+方程可以转化为
+
+$$
+\begin{vmatrix}
+1+\frac{v_0}{2}-\varepsilon & -\frac{16v_0}{9\pi^2} \\
+ \\
+-\frac{16v_0}{9\pi^2} & 4+\frac{v_0}{2}-\varepsilon
+\end{vmatrix}=0
+$$
+
+所以久期方程为
+
+$$
+\varepsilon^2-(5+v_0)\varepsilon+\left(1+\frac{v_0}{2}\right)\left(4+\frac{v_0}{2}\right)-\frac{256v_0^2}{81\pi^4}=0
+$$
+
+很容易利用球根公式得到结果为
+
+$$
+\varepsilon=\frac{5+v_0}{2}\pm\frac{1}{2}\left[9+\left(\frac{32v_0}{9\pi^2}\right)^2\right]^{1/2}
+$$
+
+取负号后得到最小的$\varepsilon$ 从而利用前面的公式求出最小能量，再利用久期行列式的某些项解出线性组合的系数。
+
+# 变分函数里也可以含有未知数
+
+之前我们提到的变分函数都是最基本的线性组合
+
+$$
+\phi=\sum_{j=1}^Nc_jf_j
+$$
+
+
+
+这里在我们选取基组时，同样在基组函数中也可以有变分参数
+
+$$
+\phi=\sum_{j=1}^Nc_je^{-\alpha_jr^2}
+$$
+
+注意在这种情况下，并不能转化为一个简单的久期行列式了。因为对于$\alpha$来说并不是现行的。因此我们要优化2N个参数，这就只能使用梯度下降法等数值计算的方法了。幸运的是有许多计算程序可以实现这些。比如MathCAD或者Mathematic，本质上就是for循环不断迭代。
