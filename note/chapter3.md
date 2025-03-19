@@ -13,7 +13,7 @@
 我们**不能直接推导出薛定谔方程**，就像我们不能推导出牛顿定律一样，尤其是牛顿第二定律
 
 $$
-f = ma ·
+f = ma 
 $$
 
 我们将把**薛定谔方程看作是量子力学的一个基本公设或公理，就像牛顿定律是经典力学的基本假设一样**。
@@ -25,7 +25,7 @@ $$
 既然是有波动性，我们就从一维的波动方程入手。虽然这里用
 
 $$
-\frac{\part^2u}{\part x^2} = \frac{1}{v^2}\frac{\part^2 u}{\part t^2}
+\frac{\partial u}{\partial x^2} =  = \frac{1}{v^2}\frac{\partial^2 u}{\partial t^2}
 $$
 
 在第二章我们分析过，这个方程的某个**驻波normal modes**解的结构是如下所示的
@@ -74,21 +74,29 @@ p =\{2m(E-V(x)\}^{\frac{1}{2}}
 $$
 
 从而可以导出对应的德布罗意波长
+
 $$
 \lambda = \frac{h}{p} = \frac{h}{\{2m(E-V(x)\}^{\frac{1}{2}}}
 $$
+
 之后我们将其带入到前面推出的方程
+
 $$
 \frac{d^2\psi}{d x^2}+\frac{4\pi^22m[E-V(x)]}{h^2}\psi(x) = 0
 $$
+
 我们一般使用**约化普朗克常数reduced Planck constant** 来化简方程
+
 $$
 \hbar = \frac{h}{2\pi} 
 $$
+
 可以得到如下方程组
+
 $$
 \frac{d^2\psi}{d x^2}+\frac{2m[E-V(x)]}{\hbar^2}\psi(x) = 0
 $$
+
 这个方程就是薛定谔方程，他是一个微分方程。**他的解描述了质量为$m$的粒子，在由$V(x)$定义的势场中的运动状态。**
 
 虽然这个波动函数$\psi(x)$是**模糊不清的vague** ，它是物质波振幅的量度，被称为粒子的**波函数wave function**。
@@ -123,11 +131,9 @@ $$
 
 这里用$\hat{A}$来表示任意的算符。算符的作用可以用一下来表述
 
-
 $$
 \hat{A}f(x) = g(x)
 $$
-
 
 这个算子作用于一个函数得到了另一个函数。
 
@@ -162,17 +168,21 @@ $$
 例题1：
 
 证明$e^{ax}$是算子$\frac{d^n}{dx^n}$ 的特征函数
+
 $$
 \frac{d^n}{dx^n}e^{ax} = a^n e^{ax} 
 $$
+
 所以对于这个算子的特征函数与特征值都求出来了。
 
 例题2：
 
-证明$e^{ikx}$是算子${\hat{p}=-i\hbar\frac{\part}{\part x}}$的特征函数
+证明$e^{ikx}$是算子${\hat{p}=-i\hbar\frac{\partial}{\partial x}}$的特征函数
+
 $$
-\hat{p}e^{ikx} =-i\hbar\frac{\part}{\part x}e^{ikx} = \hbar k e^{ikx}
+\hat{p}e^{ikx} =-i\hbar\frac{\partial}{\partial x}e^{ikx} = \hbar k e^{ikx}
 $$
+
 因此算子可能是虚数或者是复数的，只要理解这种**操作**的概念，一切都很好理解。
 
 现在回到薛定谔方程，我们将薛定谔方程整理成如下形式。
