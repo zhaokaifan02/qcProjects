@@ -219,31 +219,40 @@ $$
 $$
 
 当然不能交换的话称为**noncommutative** 
+
 $$
 \hat{A}\hat{B}f(x) \neq \hat{B}\hat{A}f(x)
 $$
+
 例如
+
 $$
 \hat{A} = \frac{d}{dx} \quad \hat{B} =x \\
 \hat{A}\hat{B}f(x) = f(x) + x\frac{df(x)}{dx} \\
 \hat{B}\hat{A}f(x) = x\frac{df(x)}{dx}
 $$
+
 这里的两个算子就是**非可交换的**。对于不可交换的算子如果有
+
 $$
 \hat{A}\hat{B}f(x) - \hat{B}\hat{A}f(x) = f(x) \\
 (\hat{A}\hat{B}-\hat{B}\hat{A})f(x) = \hat{I}f(x)
 $$
+
 这里的$\hat{I}$被叫做**identity operator**只表示简单对f(x)乘上某个东西。
 
 因为是对**任意的arbitrary**函数f(x),因此我们也可以将前面的算子写作
+
 $$
 [\hat{A},\hat{B}] = \hat{A}\hat{B}-\hat{B}\hat{A} = \hat{I}
 $$
+
 这个符号被叫做**交换子commutator** 。现在我们利用换向子的概念来重新定义可交换性。
 
 如果对于所有的f(x)都有$[\hat{A},\hat{B}]f(x) = 0$，则称两个算子是可交换的。
 
 例如
+
 $$
 \hat{A} \hat{B} f(x) = \frac{d}{dx} \left[ x^2 f(x) \right] = 2x f(x) + x^2 \frac{df}{dx} \\
 \hat{B} \hat{A} f(x) = x^2 \frac{d}{dx} f(x) = x^2 \frac{df}{dx} \\
@@ -251,7 +260,9 @@ $$
 \hat{I} = 2x \\
 [\hat{A},\hat{B}]  = 2x\hat{I}
 $$
+
 同样的，对于动量算子和位移算子也有
+
 $$
 \hat{P}_x = -i\hbar\frac{d}{dx} \qquad \hat{X}= x \\
 [\hat{P}, \hat{X}] f(x) = \hat{P} \hat{X} f(x) - \hat{X} \hat{P} f(x) \\
@@ -259,13 +270,17 @@ $$
 = -i\hbar f(x) + i\hbar \frac{df}{dx} \\
 = -i\hbar f(x)
 $$
+
 所以求出
+
 $$
 [\hat{P}, \hat{X}] = -i\hbar\hat{I}
 $$
+
 这里的$\hat{I}$就是单纯的表达乘法的意思。
 
 现在我们回忆一下测不准原理。
+
 $$
 \sigma^2_A = \int \psi^* \left( \hat{A} - \langle a \rangle \right)^2 \psi \, dx \\
 \sigma^2_B = \int \psi^* \left( \hat{B} - \langle b \rangle \right)^2 \psi \, dx \\
@@ -273,12 +288,14 @@ $$
 $$
 
 如果将A，B转化为表示唯一和动量的算子则有以下表达
+
 $$
 [\hat{A}, \hat{B}] = [\hat{P}_x, \hat{X}] = -i\hbar \hat{I} \\
 \sigma^2_p \sigma^2_x \geq -\frac{1}{4} \left[ \int \psi^* (-i\hbar) \psi \, dx \right]^2 \\
 \sigma^2_p \sigma^2_x \geq -\frac{1}{4} (-i\hbar)^2 = \frac{\hbar^2}{4} \\
 \sigma_p \sigma_x \geq \frac{\hbar}{2}
 $$
+
 就把海森堡测不准原理推导出来了
 
 # 量子力学算子必须是埃尔米特Hermitian 算子
@@ -338,40 +355,54 @@ Hermitian 矩阵（厄米矩阵，Hermitian matrix）具有以下重要性质：
 我们已经看到，波函数和一般的算符都是复数。但是，**如果要使特征值与实验测量的结果相对应，它们肯定必须是实数。**
 
 例如对于以下方程我们有
+
 $$
 \hat{A}\psi = a\psi
 $$
+
 算子和波函数都是复数，而我们能观察到的结果a一定是实数。即，**这个算子的特征值必须都是实数**。
 
 所以我们必须对算子做一些限制。
 
 先利用前面讲的归一性与特征值方程进行结合
+
 $$
 \int \psi^* \hat{A} \psi \, dx = a \int \psi^* \psi \, dx = a
 $$
+
 之后我们对这个特征值方程进行取共轭，对于算子来说他的共轭也是把虚部取反而已，比如
+
 $$
 \hat{P} = -i\hbar\frac{d}{dx} \\
 \hat{P}^* = i\hbar\frac{d}{dx}
 $$
+
 取**共轭conjugate** 后有
+
 $$
 \hat{A}^* \psi^{*} = a^* \psi^{*} = a \psi^*
 $$
+
 因为a是可被观测到的实数，所以实数的共轭还是他本身的。之后我们再进行积分处理有
+
 $$
 \int \psi \hat{A}^*\psi^* \, dx = a \int \psi\psi^* \, dx = a
 $$
+
 因此将两个式子联立可以得到
+
 $$
 \int \psi^* \hat{A} \psi \, dx = \int \psi \hat{A}^* \psi^* \, dx
 $$
+
 这样就是我们所定义的Hermitian算子。如果**一个算子对于任何满足波动方程的函数，都能有以上式子成立，那么我们就称这个算子是Hermitian operator** 。
 
 所以Hermitian算子的最终定义可以如下
+
 $$
 \int_{-\infty}^{\infty} f^* \hat{A} f \, dx = \int_{-\infty}^{\infty} f \hat{A}^* f^* \, dx
 $$
+
 所以我们对有了一条更完备的假设
 
 **在经典力学中，每一个可观察到的物理量都对应着一个线性的、量子力学中的、Hermitian算符**。
@@ -408,23 +439,24 @@ $$
 3. 证明动能算子$\hat{T}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}$
    
    我们可以进行简单的两次分步积分
-   
-   $$
-   -\frac{\hbar^2}{2m} \int_{-\infty}^{\infty} f^* \frac{d^2 f}{dx^2} \, dx = \frac{\hbar^2}{2m} \left| f^* \frac{df}{dx} \right|_{-\infty}^{\infty} + \frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \frac{df^*}{dx} \frac{d f}{dx} \, dx \\
+
+$$
+-\frac{\hbar^2}{2m} \int_{-\infty}^{\infty} f^* \frac{d^2 f}{dx^2} \, dx = \frac{\hbar^2}{2m} \left| f^* \frac{df}{dx} \right|_{-\infty}^{\infty} + \frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \frac{df^*}{dx} \frac{d f}{dx} \, dx \\
 = \frac{\hbar^2}{2m} \left| \frac{df}{dx} f \right|_{-\infty}^{\infty} - \frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \frac{d^2 f^*}{dx^2} f \, dx\\ 
 =  - \frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \frac{d^2 f^*}{dx^2} f \, dx\\ 
-   $$
-   
-   同样对共轭后的直接处理
-   
-   $$
-   \int_{-\infty}^{\infty} f \left( -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \right)^* f ^*\, dx = \int_{-\infty}^{\infty} f \left( -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \right) f^* \, dx \\ 
+$$
+
+同样对共轭后的直接处理
+
+$$
+\int_{-\infty}^{\infty} f \left( -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \right)^* f ^*\, dx = \int_{-\infty}^{\infty} f \left( -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \right) f^* \, dx \\ 
 = -\frac{\hbar^2}{2m}  \int_{-\infty}^{\infty} f \frac{d^2f^*}{dx^2}\,dx
-   $$
-   
-   就得到了二者相等，证明了动能算子也是Hermitian算子
+$$
+
+就得到了二者相等，证明了动能算子也是Hermitian算子
 
 Hermitian算子一个更加高级的定义是
+
 $$
 \int_{-\infty}^{\infty} dx \, f_m^*(x) \hat{A} f_n(x) = \int_{-\infty}^{\infty} dx \, f_n(x) \hat{A}^* f_m^*(x)
 $$
@@ -440,33 +472,48 @@ $$
 我们用$| n \rang$来表示$f_n(x)$。这时有人可能会想那函数的共轭conjugate可以表示为$| n\rang^*$但我们使用$\lang n|$来表示。
 
 因此$f_n^*(x)f_n(x)$的积分可以表示为$\lang n | n\rang$即
+
 $$
 \int_{-\infty}^{\infty}f_n^*(x)f_n(x)\,dx = \lang n | n\rang \\
 $$
-根据前面见过的**归一性Normalization** ，我们可以很容易的得到$\lang n| n\rang=1$更加普遍的可以得到
+
+根据前面见过的**归一性Normalization** ，我们可以很容易的得到$\lang n| n\rang=1$更加普遍的可
+以得到
+
 $$
 \int_{-\infty}^{\infty} dx \, f_m^*(x) f_n(x) = \langle m | n \rangle
 $$
+
 所以我们对这个积分取共轭后可以得到
+
 $$
- \langle m | n \rangle^*=\int_{-\infty}^{\infty} dx \, f_m(x) f_n^*(x) =  \langle n | m \rangle
+\langle m | n \rangle^*=\int_{-\infty}^{\infty} dx \, f_m(x) f_n^*(x) =  \langle n | m \rangle
 $$
+
 之后我们将算子操作引入可以得到
+
 $$
 \int_{-\infty}^{\infty} dx \, f_m^*(x) \hat{A} f_n(x) = \langle m | \hat{A} | n \rangle \\
 $$
+
 偶尔也会把算符写在后面即
+
 $$
 \int_{-\infty}^{\infty} dx \, f_m^*(x) \hat{A} f_n(x) = \langle m | \hat{A} | n \rangle = \lang m| \hat{A}n\rang
 $$
+
 同样的我们对其按照共轭的方式组织
+
 $$
 \int_{-\infty}^{\infty} dx \, f_n(x) \hat{A}^* f_m^*(x) = \left[ \int_{-\infty}^{\infty} dx \, f_m^*(x) \hat{A} f_n(x) \right]^* = \langle n | \hat{A} | m \rangle^*
 $$
+
 因此如果A是Hermitian算子可以得到
+
 $$
 \langle n | \hat{A} | m \rangle^* = \langle m | \hat{A} | n \rangle
 $$
+
 这个符号是由英国物理学家**Paul Dirac 保罗狄拉克**提出的。
 
 符号$| n \rang$被称为**kets** ，$\lang m|$被称为**bras**。这个命名法来源一bra c ket。 $\lang n|\hat{A}|m\rang$ 就像一个**框子括号bracket**一样对A进行积分。这种符号被叫做Dirac notation 或者 bracket notation 。
@@ -474,47 +521,65 @@ $$
 ## Hermitian算子的特征函数是正交的
 
 Hermitian算子不仅仅满足特征值是实数，对于特征函数，也就是系统的状态函数也有神奇的性质。以同一个算子的两个不同特征值的特征函数为例
+
 $$
 \hat{A}\psi_n = a_n\psi_n \\
 \hat{A}\psi_m = a_m\psi_m
 $$
+
 我们将他们放在一起进行积分有
+
 $$
 \int_{-\infty}^{\infty} \psi_m^* \hat{A} \psi_n \, dx = a_n \int_{-\infty}^{\infty} \psi_m^* \psi_n \, dx \\
 \int_{-\infty}^{\infty} \psi_n \hat{A}^* \psi_m^* \, dx = \left[ \int_{-\infty}^{\infty} \psi_n^* \hat{A} \psi_m \, dx \right]^*  = a_m^* \int_{-\infty}^{\infty} \psi_n \psi_m^* \, dx \\
 = a_m^* \int_{-\infty}^{\infty} \psi_m^* \psi_n \, dx
 $$
+
 使用前面讲过的Dirca符号可以写成
+
 $$
 \lang m|\hat{A}|n\rang = a_n\lang m |n\rang \\
 \lang n| \bar{A} |m \rang ^* = a_m^*\lang m|n\rang
 $$
+
 我们对这个两个式子做减法得到
+
 $$
 \int_{-\infty}^{\infty} \psi_m^* \hat{A} \psi_n \, dx - \int_{-\infty}^{\infty} \psi_n \hat{A} \psi_m^* \, dx = (a_n^* - a_m^*) \int_{-\infty}^{\infty} \psi_m^* \psi_n \, dx
 $$
+
 使用Dirca符号可以写成
+
 $$
 \langle m | \hat{A} | n \rangle - \langle n | \hat{A} | m \rangle^* = (a_n - a_m^*)\lang m | n\rang
 $$
+
 因为量子力学还价下的算子$\hat{A}$都是Hermitian的即有
+
 $$
 \langle m | \hat{A} | n \rangle - \langle n | \hat{A} | m \rangle^*  = 0
 $$
+
 将其带入得到
+
 $$
 (a_n - a_m^*) \int_{-\infty}^{\infty} \psi_m^* \psi_n \, dx = (a_n - a_m^*) \langle m | n \rangle = 0
 $$
+
 如果$m=n$可以整理的$\lang m | n \rang = 1$,可以得到
+
 $$
 a_n = a_n^*
 $$
+
 **这样证明了算子的特征值一定是实数**
 
 现在我们考虑$m\neq n$
+
 $$
 \int_{-\infty}^{\infty} \psi_m^* \psi_n \, dx = \langle m | n \rangle = 0 \qquad m\neq n
 $$
+
 对于满足这样性质的两个波动函数(状态函数)，称其为**直交的orthogonal** 。
 
 注意这里的直交的前提是**非简并的nondegenerate**。
@@ -522,38 +587,51 @@ $$
 回忆一下简并性，**哈密顿算子下，指的是同一个能量E可以由不同的波函数对应**
 
 用单一例子在有界盒子的非势能运动下系统举例子
+
 $$
 \hat{H}\psi = E\psi \\
 \frac{d^2\psi}{dx^2} +\frac{2mE}{\hbar^2}\psi(x) = 0 \\ \\
 $$
+
 解得为
+
 $$
 \psi_n(x) = Bsin(\frac{n\pi x}{a}) \\
 $$
+
 归一化为
+
 $$
 \int_0^a \psi_n^*\psi_n dx = 1 \\
 |B|^2\int_0^asin^2\frac{n\pi x}{a} dx =1 \\
 \psi_n(x) = \sqrt{\frac{2}{a}}sin\frac{n \pi x}{a}
 $$
+
 回忆一下高中学过的三角函数公式
+
 $$
 \sin \alpha \sin \beta = \frac{1}{2} \cos(\alpha - \beta) - \frac{1}{2} \cos(\alpha + \beta) \\
 \cos(\alpha + \beta) = \cos \alpha \cos \beta - \sin \alpha \sin \beta \\
 \cos(\alpha - \beta) = \cos \alpha \cos \beta + \sin \alpha \sin \beta
 $$
+
 再将其带入到
+
 $$
 \int_{0}^{a}\psi_m^* \psi_n \, dx = \langle m | n \rangle =\qquad m\neq n \\
 \frac{2}{a}\int_0^a\sin{\frac{n\pi x}{a}}\sin{\frac{m\pi x}{a}}\, dx = \frac{1}{a}\int_0^a\cos{\frac{(n-m)\pi x}{a}}-\cos{\frac{(n+m)\pi x}{a}}\,dx\\
 = 0
 $$
+
 所以我们有如下发现
+
 $$
 \frac{2}{a} \int_{0}^{a} \sin\left(\frac{n \pi x}{a}\right){\sin\left(\frac{m \pi x}{a}\right)} \, dx = 0 \quad (m \neq n) \\
 \frac{2}{a} \int_{0}^{a} \sin^2\left(\frac{n \pi x}{a}\right) \, dx = 1 \quad(m = n)
 $$
+
 将其推广到所有情况
+
 $$
 \int_{-\infty}^{\infty} \psi_m^* \psi_n \, dx = \langle m | n \rangle = \delta_{nm} \\
 \delta_{nm} = 
@@ -562,39 +640,50 @@ $$
 0 & \text{if } m \neq n 
 \end{cases}
 $$
+
 这个符号$\delta_{nm}$被叫做**Kronecker delta**
 
 所以做个总结，对于不简并的算子相同积分计算为1，不同积分计算为0，像极了特征向量里的正交性质。
 
 现在我们考虑简并的情况，即不同的状态方程对应同一个能量E
+
 $$
 \hat{A}\psi_1 = a_1\psi_1\\
 \hat{A}\psi_2 = a_1\psi_2
 $$
+
 我们考虑这两个状态方程的线性组合为$\phi$并对其进行算子计算得
 $$
 \hat{A} \phi = \hat{A}(c_1 \psi_1 + c_2 \psi_2) = c_1 \hat{A} \psi_1 + c_2 \hat{A} \psi_2\\
 = a_1 c_1 \psi_1 + a_2 c_2 \psi_2 = a_1 (c_1 \psi_1 + c_2 \psi_2) = a_1 \phi
 $$
+
 所以我们可以得到结论，**简并的状态方程得线性组合依然是简并的**
 
 同样我们也可以取得两种线性组合$\phi_1$和$\phi_2$满足
+
 $$
 \int_{-\infty}^{\infty} \phi_1^* \phi_2 \, dx = 0
 $$
+
 现在我们来证明他，取线性组合为
 $$
 \phi_1 = \psi_1 \quad \text{and} \quad \phi_2 = \psi_2 + c \psi_1
 $$
+
 然后进行Dirca算子计算
+
 $$
 \int_{-\infty}^{\infty} \phi_1^* \phi_2 \, dx = \lang\phi_1 | \phi_2\rang = \int_{-\infty}^{\infty} \psi_1^* (\psi_2 + c \psi_1) \, dx \\
 = \int_{-\infty}^{\infty} \psi_1^* \psi_2 \, dx + c \int_{-\infty}^{\infty} \psi_1^* \psi_1 \, dx = \lang\psi_1 | \psi_2\rang + c = 0
 $$
+
 由此我们的常数c可以取得为
+
 $$
 c = -\int_{-\infty}^{\infty} \psi_1^* \psi_2 \, dx = -\lang\psi_1 | \psi_2\rang
 $$
+
 这个过程可以扩展到n状态方程的简并情况，依此累加迭代实现。这个过程被称为**施密特正交化Gram-Schmidt orthonormalization procedure** 
 
 所以即使存在n个简并，我们可以使用施密特正交化来将其变成n个正交的函数，**从而组成一个标准正交的集合**。

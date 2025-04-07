@@ -10,15 +10,11 @@
 
     2. 特征向量两两垂直相互正交，或者是可以通过施密特正交化来实现两两正交。
 
-
-
 同样的量子力学中的算子都是Hermitian算子。与Hermitian矩阵不同，算子的共轭转置无法以具体形势给出只能以二次积分的形式给出。用Dirca符号表示如下
 
 $$
 \lang n | \hat{A}|  m\rang ^* = \lang m | \hat{A} | n \rang
 $$
-
-
 
 满足这样的算子就是Hermitian算子。
 
@@ -47,8 +43,6 @@ $$
 $$
 \psi(x) = \sum_{n} c_n \phi_n(x), \quad c_n = \langle \phi_n | \psi \rangle,
 $$
-
-
 
 其中$\{\phi_n\}$是特征函数的集合。**展开系数 $|c|^2$ 表示测量对应可观测量的概率**。
 
@@ -79,8 +73,6 @@ $$
 \hat{A}\psi_n = a_n\psi_n \\
 \hat{B}\psi_n = b_n\psi_n
 $$
-
-
 
 由于算子是Hermitian算子，因此任何函数都可以表示为，这些正交的基函数的线性组合
 
@@ -140,8 +132,6 @@ $$
 f(x) = \sum_{n=1}^{\infty} c_n \psi_n(x)
 $$
 
-
-
 我们称这一组函数是**完备的complete**
 
 与线性代数的矩阵观念不同，我们通常很难证明其完备性。
@@ -200,7 +190,6 @@ $$
 
 因此整个这个系数可以被写为
 
-
 $$
 c_n = 
 \begin{cases} 
@@ -257,8 +246,6 @@ f(x) = \sum_{n=1}^{\infty} c_n \psi_n(x) \qquad c_n = \lang \psi_n |f\rang
 $$
 
 则$|c_n|^2$反映了 $\psi_n$对应的特征值$a_n$出现的概率。
-
-
 
 现在假设系统处于本征态，即系统的函数正好是特征函数$\psi_1$,有$\hat{H}\psi_1=E_n \psi_1$ 。
 
@@ -378,12 +365,12 @@ $$
 $$
 带入后得到
 $$
-\frac{1}{\psi(x)} \hat{H} \psi(x) = i \hbar \frac{df}{dt}
+\frac{1}{\psi(x)} \hat{H} \psi(x) = i \hbar \frac{df}{dt}
 $$
 因为左右两边都是与对方无关的，所以可以设置一个常数E，整理后得到
 $$
 \hat{H} \psi(x) = E \psi(x) \\
-\frac{df}{dt} = -\frac{i}{\hbar} E f(t)
+\frac{df}{dt} = -\frac{i}{\hbar} E f(t)
 $$
 对于第二个式子我们可以通过直接积分法快速解得
 $$
@@ -399,10 +386,10 @@ E =h\nu = \hbar\omega
 $$
 可以将时间依赖的状态函数整理后
 
-
 $$
 \Psi(x, t) = \psi(x) e^{-i\omega t}
 $$
+
 这里说明时间方程随着时间**谐波振荡oscillates harmonically** ，具有波动的特征。这也说明了薛定谔方程有波动解
 
 如果系统处于这里解出的本征态时。有如下情况
@@ -427,7 +414,6 @@ $$
 \Psi(x, t) = \sum_{n} c_n \psi_n(x) e^{-iE_nt/\hbar}
 $$
 
-
 我们以两个解为例
 $$
 \Psi(x, t) = c_1 \psi_1(x)e^{-iE_1t/\hbar} + c_2 \psi_2(x)e^{-iE_2t/\hbar}
@@ -438,10 +424,11 @@ $$
 \left[c_1^* \psi_1^*(x) e^{iE_1t/\hbar} + c_2^* \psi_2^*(x) e^{iE_2t/\hbar}\right] 
 \left[c_1 \psi_1(x) e^{-iE_1t/\hbar} + c_2 \psi_2(x) e^{-iE_2t/\hbar}\right] \\
 = |c_1|^2 \psi_1^*(x) \psi_1(x) + |c_2|^2 \psi_2^*(x) \psi_2(x)  \\
+
 + c_1^* c_2 \psi_1^*(x) \psi_2(x) \, \exp\left[i(E_1 - E_2)t\right/\hbar] \\
 + c_2^* c_1 \psi_2^*(x) \psi_1(x) \, \exp\left[i(E_2 - E_1)t\right/\hbar]
-$$
-第三项和第四项包含时间，因此他不是定态的。
+  $$
+  第三项和第四项包含时间，因此他不是定态的。
 
 现在我们用具体的两个特征函数来描述这个系统
 $$
@@ -452,20 +439,25 @@ $$
 \int_0^a dx \, \Psi^*(x, t) \Psi(x, t) = \frac{2c_1^2}{a} \int_0^a dx \left( e^{iE_1t/\hbar} {\sin\left( \frac{\pi x}{a} \right)} + e^{iE_2t/\hbar} \sin\left( \frac{2\pi x}{a} \right) \right) \times \\
 = \left( e^{-iE_1t/\hbar} {\sin\left( \frac{\pi x}{a} \right)} + e^{-iE_2t/\hbar} {\sin\left( \frac{2\pi x}{a} \right)} \right) \\
 = \frac{2c_1^2}{a} \left[ \int_0^a dx \, \sin^2\left( \frac{\pi x}{a} \right) + \int_0^a dx \, \sin^2\left( \frac{2\pi x}{a} \right) \right] \\
+
 + 2 \cos\left( \frac{(E_2 - E_1)t}{\hbar} \right) \int_0^a dx \, \sin\left( \frac{\pi x}{a} \right) \sin\left( \frac{2\pi x}{a} \right) \\
-= \frac{2c_1^2}{a} \left( \frac{a}{2} + \frac{a}{2} + 0 \right) = 2c_1^2 = 1
-$$
-所以就可以在$c_1 = \sqrt{1/2}$时满足归一性，因此我们可以大胆假设：**与时间有关的薛定谔方程就是与时间无关的方程的解乘上时间波动。**在此情况下其解为
-$$
-\Psi(x, t) = \left( \frac{1}{a} \right)^{1/2} e^{-iE_1t/\hbar} \sin\left( \frac{\pi x}{a} \right) + \left( \frac{1}{a} \right)^{1/2} e^{-iE_2t/\hbar} \sin\left( \frac{2\pi x}{a} \right)
-$$
-现在我们来求一下他的期望位置
-$$
-\langle x \rangle = \int_0^a dx \, \Psi^*(x, t) x \Psi(x, t) = \frac{1}{a} \int_0^a dx \, x \sin^2\left( \frac{\pi x}{a} \right) + \frac{1}{a} \int_0^a dx \, x \sin^2\left( \frac{2\pi x}{a} \right)\\
+  = \frac{2c_1^2}{a} \left( \frac{a}{2} + \frac{a}{2} + 0 \right) = 2c_1^2 = 1
+  
+  $$
+  所以就可以在$c_1 = \sqrt{1/2}$时满足归一性，因此我们可以大胆假设：**与时间有关的薛定谔方程就是与时间无关的方程的解乘上时间波动。**在此情况下其解为
+  $$
+  
+  \Psi(x, t) = \left( \frac{1}{a} \right)^{1/2} e^{-iE_1t/\hbar} \sin\left( \frac{\pi x}{a} \right) + \left( \frac{1}{a} \right)^{1/2} e^{-iE_2t/\hbar} \sin\left( \frac{2\pi x}{a} \right)
+  
+  $$
+  现在我们来求一下他的期望位置
+  $$
+  
+  \langle x \rangle = \int_0^a dx \, \Psi^*(x, t) x \Psi(x, t) = \frac{1}{a} \int_0^a dx \, x \sin^2\left( \frac{\pi x}{a} \right) + \frac{1}{a} \int_0^a dx \, x \sin^2\left( \frac{2\pi x}{a} \right)\\
 + \frac{2 \cos(\omega_1 t)}{a} \int_0^a dx \, x \sin\left( \frac{\pi x}{a} \right) \sin\left( \frac{2\pi x}{a} \right) \\
-= \frac{a}{2} - \frac{16a}{9\pi^2} \cos(\omega_{12} t)
-$$
-其中$\omega_{12} = (E_2 - E_1)/\hbar$ ，由此我们可以画出他的位置随时间变化的图像。
+  = \frac{a}{2} - \frac{16a}{9\pi^2} \cos(\omega_{12} t)
+  $$
+  其中$\omega_{12} = (E_2 - E_1)/\hbar$ ，由此我们可以画出他的位置随时间变化的图像。
 
 ![1740397898640](.\figure\1740397898640.png)
 
@@ -505,5 +497,5 @@ $$
 
 根据时变薛定谔方程，系统的波函数或状态函数随时间演化
 $$
-\hat{H} \Psi(x, t) = i\hbar \frac{\partial \Psi}{\partial t}
+\hat{H} \Psi(x, t) = i\hbar \frac{\partial \Psi}{\partial t}
 $$
